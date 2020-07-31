@@ -11,7 +11,7 @@
         <div id="hero" class="jumbotron" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="100" style='width: 100%;'>
         <!-- <div class="container"> -->
             <div class="row align-items-center h-100" style="margin-left: 0; margin-right: 0; width: 100%">
-                <div class="col-lg-6 col-md-12 order-1" style="padding:0">
+                <div class="col-lg-6 col-md-6 col-sm-6 order-1" style="padding:0">
                     <h1 class="hero-title" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Hi! My name is <span class="text-color-main">Simon Musmos</span>,<br>I love turning ideas into reality.</h1>
                     <p class="hero-cta" data-aos="fade-right"data-aos-easing="ease-in-out" data-aos-delay="300">
                         <a class="cta-btn cta-btn--hero">
@@ -19,7 +19,7 @@
                         </a>
                     </p>
                 </div>
-                <div class="col-lg-6 col-md-12 order-2" style="margin-left: 0; padding: 0">
+                <div class="col-lg-6 col-md-6 col-sm-6 order-2" style="margin-left: 0; padding: 0">
                     <img src="img/bg-hero.jpg" style="width: 100%">
                 </div>
             </div>
