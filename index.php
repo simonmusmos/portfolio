@@ -19,6 +19,20 @@
                     height: 100% !important;
                 }
             }
+            @media (max-width: 991px) and (min-width: 771px){
+                #about {
+                    height: 75% !important;
+                }
+                #hero-img-div{
+                    margin-top: -40%;
+                }
+                #title-hero{
+                    text-align: center !important;
+                }
+                #hero-btn{
+                    justify-content: center !important;
+                }
+            }
             @media screen and (max-width: 767px){
                 #hero-img-div{
                     margin-top: -50%;
@@ -28,14 +42,14 @@
                 }
                 
             }
-            @media (max-width: 900px) and (min-width: 768px){
+            /* @media (max-width: 900px) and (min-width: 768px){
                 #title-hero{
                     text-align: left;
                 }
                 #hero-btn{
                     float:left;
                 }
-            }
+            } */
             @media screen and (max-width: 992px){
                 /* .proj-desc, .projttl, .cta-live,{
                     text-align: center;
@@ -51,7 +65,7 @@
         <div id="hero" class="jumbotron" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="100" style='width: 100%;'>
         <!-- <div class="container"> -->
             <div class="row align-items-center h-100" style="margin-left: 0; margin-right: 0; width: 100%">
-                <div class="col-lg-4 col-md-6 col-sm-12 order-1" style="padding:0">
+                <div class="col-lg-4 col-md-12 col-sm-12 order-1" style="padding:0">
                     <h1 class="hero-title" id="title-hero" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200" style="text-align: left;">Hi! My name is <span class="text-color-main">Simon Musmos</span>,<br>I love turning ideas into reality.</h1>
                     <p class="hero-cta" id="hero-btn" data-aos="fade-right"data-aos-easing="ease-in-out" data-aos-delay="300">
                         <a class="cta-btn cta-btn--hero">
@@ -59,7 +73,7 @@
                         </a>
                     </p>
                 </div>
-                <div class="col-lg-8 col-md-6 order-2" style="margin-left: 0; padding: 0" id="hero-img-div">
+                <div class="col-lg-8 col-md-12 order-2" style="margin-left: 0; padding: 0" id="hero-img-div">
                     <img src="img/bg-hero.jpg" style="width: 100%">
                 </div>
             </div>
