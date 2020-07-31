@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="css/style1.css">
         <style>
             body{
-                width: 100%;
+                width: auto;
             }
             @media (min-width: 0px) and (max-width: 575px){
                 /* .proj-desc, .projttl, .cta-live,{
