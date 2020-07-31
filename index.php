@@ -5,7 +5,22 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/aos.css">
         <link rel="stylesheet" href="css/style1.css">
-        
+        <style>
+            @media screen and (max-width: 770px){
+                #about {
+                    height: 100% !important;
+                }
+            }
+            @media screen and (max-width: 992px){
+                /* .proj-desc, .projttl, .cta-live,{
+                    text-align: center;
+                } */
+                .cta-btn-live, .cta-btn-view{
+                    float: right;
+                    margin-bottom: 15px;
+                }
+            }
+        </style>
     </head>
     <body>
         <div id="hero" class="jumbotron" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="100" style='width: 100%;'>
@@ -60,17 +75,17 @@ though I am still beginner.</p>
                 <div class="project-wrapper">
                     <h2 class="section-title dark-blue-text" data-aos="zoom-in" data-aos-easing="ease-in-out">Projects</h2>
                     <div class="row">
-                        <div class="col-lg-4 col-sm-12">
+                        <div class="col-lg-4">
                             <div class="project-wrapper__text">
-                                <h3 class="project-wrapper__text-title" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">Personal Portfolio Website</h3>
+                                <h3 class="project-wrapper__text-title projttl" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">Personal Portfolio Website</h3>
                                 <div data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
-                                    <p class="mb-4">A minimal website that will act as my own personal portfolio. This website is hardcoded by me.</p>
+                                    <p class="mb-4 proj-desc">A minimal website that will act as my own personal portfolio. This website is hardcoded by me.</p>
                                 </div>
-                                <a target="_blank" class="cta-btn cta-btn--hero" href="#!" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">See Live </a>
-                                <a target="_blank" class="cta-btn text-color-main" href="https://github.com/simonmusmos/portfolio" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a>
+                                <a target="_blank" class="cta-btn cta-btn--hero cta-btn-live" href="#!" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">See Live </a>
+                                <a target="_blank" class="cta-btn text-color-main cta-btn-view" href="https://github.com/simonmusmos/portfolio" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a>
                             </div>
                         </div>
-                        <div class="col-lg-8 col-sm-12" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
+                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
                             <div class="react-reveal project-wrapper__image border">
                                 <img src="img/project1.jpg"style="width: 80%">
                             </div>
