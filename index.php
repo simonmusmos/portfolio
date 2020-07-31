@@ -1,6 +1,6 @@
 <html>
     <head>
-        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/aos.css">
         <link rel="stylesheet" href="css/style1.css">
         
@@ -10,7 +10,7 @@
         <!-- <div class="container"> -->
             <div class="row align-items-center h-100" style="margin-left: 0; margin-right: 0; width: 100%">
                 <div class="col-lg-6 col-md-12 order-1" style="padding:0">
-                    <h1 class="hero-title" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Hi, my name is <span class="text-color-main">Simon Musmos</span>,<br>I'm a Young Developer.</h1>
+                    <h1 class="hero-title" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Hi! My name is <span class="text-color-main">Simon Musmos</span>,<br>I love turning ideas into reality.</h1>
                     <p class="hero-cta" data-aos="fade-right"data-aos-easing="ease-in-out" data-aos-delay="300">
                         <a class="cta-btn cta-btn--hero">
                             Know More
@@ -53,6 +53,72 @@ though I am still beginner.</p>
                 </div>
             </div>
         </section>
+        <section id="projects">
+            <div class="container">
+                <div class="project-wrapper">
+                    <h2 class="section-title dark-blue-text" data-aos="zoom-in" data-aos-easing="ease-in-out">Projects</h2>
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-12">
+                            <div class="project-wrapper__text">
+                                <h3 class="project-wrapper__text-title" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">Personal Portfolio Website</h3>
+                                <div data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                    <p class="mb-4">A minimal website that will act as my own personal portfolio. This website is hardcoded by me.</p>
+                                </div>
+                                <a target="_blank" class="cta-btn cta-btn--hero" href="#!" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">See Live </a>
+                                <a target="_blank" class="cta-btn text-color-main" href="https://github.com/simonmusmos/portfolio" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-sm-12" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
+                            <div class="react-reveal project-wrapper__image border">
+                                <img src="img/project1.jpg"style="width: 80%">
+                            </div>
+                        </div>
+                    <!-- </div>
+                </div>
+            </div> -->
+        </section>
+        <section id="contact"  data-aos="fade-up" data-aos-easing="ease-in-out">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="200">Contact</h2>
+                <div class="contact-wrapper">
+                    <p class="contact-wrapper__text" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="400">Want to turn your ideas in to reality?</p>
+                    <a target="_blank" class="cta-btn cta-btn--resume" href="mailto:simonmusmos@gmail.com" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="500">Let's Go!</a>
+                </div>
+            </div>
+        </section>
+        <footer class="footer navbar-static-bottom">
+            <div class="container">
+                <a href="#top" aria-label="Back To Top" class="back-to-top">
+                    <i class="fa fa-angle-up fa-2x" aria-hidden="true">
+
+                    </i>
+                </a>
+                <div class="social-links">
+                    <a href="https://twitter.com/cobidev" rel="noopener noreferrer" target="_blank" aria-label="twitter">
+                        <i class="fa fa-twitter fa-inverse">
+
+                        </i>
+                    </a>
+                    <a href="https://codepen.io/cobimr" rel="noopener noreferrer" target="_blank" aria-label="codepen">
+                        <i class="fa fa-codepen fa-inverse">
+
+                        </i>
+                    </a>
+                    <a href="https://linkedin.com/in/cobidev" rel="noopener noreferrer" target="_blank" aria-label="linkedin">
+                        <i class="fa fa-linkedin fa-inverse">
+
+                        </i>
+                    </a>
+                    <a href="https://github.com/cobidev" rel="noopener noreferrer" target="_blank" aria-label="github">
+                        <i class="fa fa-github fa-inverse">
+
+                        </i>
+                    </a>
+                </div>
+            <hr>
+            <p class="footer__text">© 2020 - Template developed by <a href="https://github.com/cobidev" target="_blank" rel="noopener noreferrer">Jacobo Martínez</a> and edited by <a href="https://github.com/simonmusmos" target="_blank" rel="noopener noreferrer">Simon Musmos</a></p>
+            </div>
+        </footer>
         <script src="js/main.js"></script>
         <!-- <script src="js/vendor.js"></script> -->
         <script type="text/javascript" src="js/aos.js"></script>
