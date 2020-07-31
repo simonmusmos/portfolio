@@ -94,22 +94,22 @@ though I am still beginner.</p>
                     </i>
                 </a>
                 <div class="social-links">
-                    <a href="https://twitter.com/cobidev" rel="noopener noreferrer" target="_blank" aria-label="twitter">
-                        <i class="fa fa-twitter fa-inverse">
+                    <a href="https://instagram.com/simonmusmos" rel="noopener noreferrer" target="_blank" aria-label="instagram">
+                        <i class="fa fa-instagram fa-inverse">
 
                         </i>
                     </a>
-                    <a href="https://codepen.io/cobimr" rel="noopener noreferrer" target="_blank" aria-label="codepen">
-                        <i class="fa fa-codepen fa-inverse">
+                    <a href="https://www.facebook.com/MusmosSimon" rel="noopener noreferrer" target="_blank" aria-label="facebook">
+                        <i class="fa fa-facebook fa-inverse">
 
                         </i>
                     </a>
-                    <a href="https://linkedin.com/in/cobidev" rel="noopener noreferrer" target="_blank" aria-label="linkedin">
+                    <a href="https://www.linkedin.com/in/simon-musmos-34324517b/" rel="noopener noreferrer" target="_blank" aria-label="linkedin">
                         <i class="fa fa-linkedin fa-inverse">
 
                         </i>
                     </a>
-                    <a href="https://github.com/cobidev" rel="noopener noreferrer" target="_blank" aria-label="github">
+                    <a href="https://github.com/simonmusmos" rel="noopener noreferrer" target="_blank" aria-label="github">
                         <i class="fa fa-github fa-inverse">
 
                         </i>
