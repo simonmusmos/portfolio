@@ -6,9 +6,34 @@
         <link rel="stylesheet" href="css/aos.css">
         <link rel="stylesheet" href="css/style1.css">
         <style>
+            @media screen and (max-width: 576px){
+                /* .proj-desc, .projttl, .cta-live,{
+                    text-align: center;
+                } */
+                #hero-img-div{
+                    display: none;
+                }
+            }
             @media screen and (max-width: 770px){
                 #about {
                     height: 100% !important;
+                }
+            }
+            @media screen and (max-width: 767px){
+                #hero-img-div{
+                    margin-top: -50%;
+                }
+                #title-hero{
+                    text-align: center !important;
+                }
+                
+            }
+            @media (max-width: 900px) and (min-width: 768px){
+                #title-hero{
+                    text-align: left;
+                }
+                #hero-btn{
+                    float:left;
                 }
             }
             @media screen and (max-width: 992px){
@@ -26,15 +51,15 @@
         <div id="hero" class="jumbotron" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="100" style='width: 100%;'>
         <!-- <div class="container"> -->
             <div class="row align-items-center h-100" style="margin-left: 0; margin-right: 0; width: 100%">
-                <div class="col-lg-6 col-md-6 col-sm-6 order-1" style="padding:0">
-                    <h1 class="hero-title" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Hi! My name is <span class="text-color-main">Simon Musmos</span>,<br>I love turning ideas into reality.</h1>
-                    <p class="hero-cta" data-aos="fade-right"data-aos-easing="ease-in-out" data-aos-delay="300">
+                <div class="col-lg-4 col-md-6 col-sm-12 order-1" style="padding:0">
+                    <h1 class="hero-title" id="title-hero" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200" style="text-align: left;">Hi! My name is <span class="text-color-main">Simon Musmos</span>,<br>I love turning ideas into reality.</h1>
+                    <p class="hero-cta" id="hero-btn" data-aos="fade-right"data-aos-easing="ease-in-out" data-aos-delay="300">
                         <a class="cta-btn cta-btn--hero">
                             Know More
                         </a>
                     </p>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 order-2" style="margin-left: 0; padding: 0">
+                <div class="col-lg-8 col-md-6 order-2" style="margin-left: 0; padding: 0" id="hero-img-div">
                     <img src="img/bg-hero.jpg" style="width: 100%">
                 </div>
             </div>
@@ -51,12 +76,12 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div class="about-wrapper__info">
-                            <p class="about-wrapper__info-text" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">A dependable and hardworking Back-end Developer with a Bachelor’s
+                            <p class="about-wrapper__info-text" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400" style="font-weight: 600;">A dependable and hardworking Back-end Developer with a Bachelor’s
 Degree in the course of Information Technology. A good knowledge in
 software and web development. Flexible and can easily adjust on any
 given task or job
 .</p>
-                            <p class="about-wrapper__info-text" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="550">Currently working as a Web Developer at Dynamic Markups IT Solutions. Most of the task
+                            <p class="about-wrapper__info-text" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="550" style="font-weight: 600;">Currently working as a Web Developer at Dynamic Markups IT Solutions. Most of the task
 revolves around economical transactions, meaning it is about money. The job is very
 crucial, because there must be no line of error since it is about money. Also
 doing Frontend little by little because I want to be a Full-stack Developer
@@ -103,7 +128,7 @@ though I am still beginner.</p>
                 </div>
             </div>
         </section>
-        <footer class="footer navbar-static-bottom">
+        <footer class="footer navbar-static-bottom" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="100">
             <div class="container">
                 <a href="#top" aria-label="Back To Top" class="back-to-top">
                     <i class="fa fa-angle-up fa-2x" aria-hidden="true">
