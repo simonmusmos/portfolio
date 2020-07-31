@@ -1,16 +1,14 @@
-<html>
+<html style="width: 100%">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=0.8" >
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
         <title>Simon Musmos - Your Programmer Next Door</title>
         <link rel="icon" href="img/favicon.ico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/aos.css">
         <link rel="stylesheet" href="css/style1.css">
         <style>
+           
             body{
-                width: 100%;
-            }
-            section{
                 width: 100%;
             }
             @media (min-width: 0px) and (max-width: 575px){
@@ -24,6 +22,9 @@
             @media (max-width: 770px){
                 #about {
                     height: auto !important;
+                }
+                section {
+                    width: 100vw;
                 }
             }
             @media (max-width: 991px) and (min-width: 771px){
