@@ -1,4 +1,4 @@
-<html style="width: 100%;">
+<html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
         <title>Simon Musmos - Your Programmer Next Door</title>
@@ -63,7 +63,7 @@
             }
         </style>
     </head>
-    <body style="overflow-x: hidden; width: 100%;">
+    <body style=" width: 100%;overflow: hidden;">
         <div id="hero" class="jumbotron" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="100" style='width: 100%;'>
         <!-- <div class="container"> -->
             <div class="row align-items-center h-100" style="margin-left: 0; margin-right: 0; width: 100%">
