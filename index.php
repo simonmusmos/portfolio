@@ -1,20 +1,21 @@
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=0.8" >
         <title>Simon Musmos - Your Programmer Next Door</title>
         <link rel="icon" href="img/favicon.ico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/aos.css">
         <link rel="stylesheet" href="css/style1.css">
         <style>
-            @media screen and (max-width: 576px){
+            @media (min-width: 0px) and (max-width: 575px){
                 /* .proj-desc, .projttl, .cta-live,{
                     text-align: center;
                 } */
                 #hero-img-div{
-                    display: none;
+                    display: none !important;
                 }
             }
-            @media screen and (max-width: 770px){
+            @media (max-width: 770px){
                 #about {
                     height: auto !important;
                 }
@@ -33,7 +34,7 @@
                     justify-content: center !important;
                 }
             }
-            @media screen and (max-width: 767px){
+            @media (max-width: 767px){
                 #hero-img-div{
                     margin-top: -50%;
                 }
@@ -50,7 +51,7 @@
                     float:left;
                 }
             } */
-            @media screen and (max-width: 992px){
+            @media (max-width: 992px){
                 /* .proj-desc, .projttl, .cta-live,{
                     text-align: center;
                 } */
