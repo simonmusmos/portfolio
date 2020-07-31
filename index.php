@@ -59,6 +59,6 @@ though I am still beginner.</p>
         <script type="text/javascript">
             AOS.init();
         </script>
-        <span>Hardcoded by yours truly.</span>
+        <!-- <span>Hardcoded by yours truly.</span> -->
     </body>
 </html>
