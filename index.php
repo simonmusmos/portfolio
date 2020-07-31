@@ -16,15 +16,15 @@
             }
             @media screen and (max-width: 770px){
                 #about {
-                    height: 100% !important;
+                    height: auto !important;
                 }
             }
             @media (max-width: 991px) and (min-width: 771px){
                 #about {
-                    height: 75% !important;
+                    height: 750px !important;
                 }
                 #hero-img-div{
-                    margin-top: -40%;
+                    margin-top: -300px;
                 }
                 #title-hero{
                     text-align: center !important;
