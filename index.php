@@ -2,12 +2,18 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
         <title>Simon Musmos - Your Programmer Next Door</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <link rel="icon" href="img/favicon.ico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/aos.css">
         <link rel="stylesheet" href="css/style1.css">
         <style>
-           
+            .progress {
+                margin: 0 20% 0 20%;
+            }
             @media (min-width: 0px) and (max-width: 575px){
                 /* .proj-desc, .projttl, .cta-live,{
                     text-align: center;
@@ -19,6 +25,11 @@
             @media (max-width: 770px){
                 #about {
                     height: auto !important;
+                }
+            }
+            @media (min-width: 1201px){
+                #skills {
+                    padding-bottom: 150px
                 }
             }
             @media (max-width: 991px) and (min-width: 771px){
@@ -111,6 +122,7 @@ though I am still beginner.</p>
                 </div>
             </div>
         </section>
+        
         <section id="projects">
             <div class="container">
                 <div class="project-wrapper">
@@ -131,10 +143,57 @@ though I am still beginner.</p>
                                 <img src="img/project1.jpg"style="width: 80%">
                             </div>
                         </div>
-                    <!-- </div>
+                    </div>
                 </div>
-            </div> -->
+            </div>
         </section>
+        
+        <section id="skills" style="background-color: #333;" data-aos="fade-up" data-aos-easing="ease-in-out">
+            <div class="container">
+                <div class="project-wrapper">
+                    <h2 class="section-title text-white" data-aos="zoom-in" data-aos-easing="ease-in-out">Skills</h2>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">PHP</h2>
+                            <div class="progress" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+                            </div><br>
+                            <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">Javascript/JQuery</h2>
+                            <div class="progress" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                            </div><br>
+                            <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">MySQL</h2>
+                            <div class="progress" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                            </div><br>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">Bootstrap</h2>
+                            <div class="progress" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
+                            </div><br>
+                            <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">Visual Basic</h2>
+                            <div class="progress" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                            </div><br>
+                            <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">Laravel</h2>
+                            <div class="progress" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%"></div>
+                            </div><br>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div style="position: absolute; bottom=0; background-color: #333; width: 100%; height: 20%; z-index: -200"></div>
         <section id="contact"  data-aos="fade-up" data-aos-easing="ease-in-out">
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="200">Contact</h2>
@@ -144,6 +203,7 @@ though I am still beginner.</p>
                 </div>
             </div>
         </section>
+        
         <footer class="footer navbar-static-bottom" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="100">
             <div class="container">
                 <a href="#top" aria-label="Back To Top" class="back-to-top">
@@ -177,6 +237,7 @@ though I am still beginner.</p>
             <p class="footer__text">© 2020 - Template developed by <a href="https://github.com/cobidev" target="_blank" rel="noopener noreferrer">Jacobo Martínez</a> and edited by <a href="https://github.com/simonmusmos" target="_blank" rel="noopener noreferrer">Simon Musmos</a></p>
             </div>
         </footer>
+        
         <script src="js/main.js"></script>
         <!-- <script src="js/vendor.js"></script> -->
         <script type="text/javascript" src="js/aos.js"></script>
