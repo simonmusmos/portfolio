@@ -69,11 +69,11 @@
             <div class="row align-items-center h-100" style="margin-left: 0; margin-right: 0; width: 100%">
                 <div class="col-lg-4 col-md-12 col-sm-12 order-1" style="padding:0">
                     <h1 class="hero-title" id="title-hero" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200" style="text-align: left;">Hi! My name is <span class="text-color-main">Simon Musmos</span>,<br>I love turning ideas into reality.</h1>
-                    <p class="hero-cta" id="hero-btn" data-aos="fade-right"data-aos-easing="ease-in-out" data-aos-delay="300">
+                    <!-- <p class="hero-cta" id="hero-btn" data-aos="fade-right"data-aos-easing="ease-in-out" data-aos-delay="300">
                         <a class="cta-btn cta-btn--hero">
                             Know More
                         </a>
-                    </p>
+                    </p> -->
                 </div>
                 <div class="col-lg-8 col-md-12 order-2" style="margin-left: 0; padding: 0" id="hero-img-div">
                     <img src="img/bg-hero.jpg" style="width: 100%">
