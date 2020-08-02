@@ -31,6 +31,9 @@
                 #skills {
                     padding-bottom: 150px
                 }
+                #awards {
+                    padding-bottom: 100px
+                }
             }
             @media (max-width: 991px) and (min-width: 771px){
                 #about {
@@ -92,6 +95,7 @@
             </div>
         </div>
         <!-- </div> -->
+        <div style="position: absolute; bottom:-650px; background-color: #333; width: 100%; height: 20%; z-index: -200; margin-bottom: -20px;" data-aos="fade-up" data-aos-easing="ease-in-out" style="height: 650px"></div>
         <section id="about" data-aos="fade-up" data-aos-easing="ease-in-out" style="height: 650px">
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="200">About me</h2>
@@ -123,6 +127,27 @@ though I am still beginner.</p>
             </div>
         </section>
         
+        <section id="awards" style="background-color: #333; padding-bottom: 50px;" data-aos="fade-up" data-aos-easing="ease-in-out">
+            <div class="container">
+                <div class="project-wrapper">
+                    <h2 class="section-title text-white" data-aos="zoom-in" data-aos-easing="ease-in-out">Awards</h2>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12">
+                            <h1 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">2018</h1>
+                            <h3 class="text-white" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">2018 FICT Fastest Programmer</h3><br>
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <h1 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">2018</h1>
+                            <h3 class="text-white" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">Clash of Codes Coding Wizard</h3><br>
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">2019</h2>
+                            <h3 class="text-white" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">2019 FICT Fastest Programmer</h3><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="projects">
             <div class="container">
                 <div class="project-wrapper">
