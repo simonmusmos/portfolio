@@ -163,9 +163,54 @@ though I am still beginner.</p>
                                 <a target="_blank" class="cta-btn text-color-main cta-btn-view" href="https://github.com/simonmusmos/portfolio" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a>
                             </div>
                         </div>
-                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
+                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200" style="margin-bottom: 20px;">
                             <div class="react-reveal project-wrapper__image border">
                                 <img src="img/project1.jpg"style="width: 80%">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="project-wrapper__text">
+                                <h3 class="project-wrapper__text-title projttl" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">Metamorphosis API</h3>
+                                <div data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                    <p class="mb-4 proj-desc">An API made from Laravel. This is for the students that need a quick API for their websites. Currently have basic Login, Signup and Get Details. Other functions are currently under development.</p>
+                                </div>
+                                <!-- <a target="_blank" class="cta-btn cta-btn--hero cta-btn-live" href="#!" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200" disabled>See Live </a> -->
+                                <a target="_blank" class="cta-btn text-color-main cta-btn-view" href="https://github.com/simonmusmos/portfolio" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200" style="margin-bottom: 20px;">
+                            <div class="react-reveal project-wrapper__image border">
+                                <img src="img/nopreview.jpg"style="width: 80%">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="project-wrapper__text">
+                                <h3 class="project-wrapper__text-title projttl" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">Visual</h3>
+                                <div data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                    <p class="mb-4 proj-desc">A software made for SM Rosario. Made using Visual Studio. This was used by the pageant judges to tally the score and get the winner of the pageant.</p>
+                                </div>
+                                <!-- <a target="_blank" class="cta-btn cta-btn--hero cta-btn-live" href="#!" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200" disabled>See Live </a> -->
+                                <a target="_blank" class="cta-btn text-color-main cta-btn-view" href="https://github.com/simonmusmos/Visual-Second" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200" style="margin-bottom: 20px;">
+                            <div class="react-reveal project-wrapper__image border">
+                                <img src="img/nopreview.jpg"style="width: 80%">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="project-wrapper__text">
+                                <h3 class="project-wrapper__text-title projttl" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">MLM Websites</h3>
+                                <div data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                    <p class="mb-4 proj-desc">In my current company, we develop MLM/Network Websites. Unfortunately, I cannot show you anything because everything is so confidential. I already developed 5 MLM/Networking Websites under my current company, in the span of 1 year.</p>
+                                </div>
+                                <!-- <a target="_blank" class="cta-btn cta-btn--hero cta-btn-live" href="#!" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200" disabled>See Live </a> -->
+                                <!-- <a target="_blank" class="cta-btn text-color-main cta-btn-view" href="https://github.com/simonmusmos/Visual-Second" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
+                            <div class="react-reveal project-wrapper__image border">
+                                <img src="img/nopreview.jpg"style="width: 80%">
                             </div>
                         </div>
                     </div>
@@ -189,6 +234,11 @@ though I am still beginner.</p>
                                 
                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
                             </div><br>
+                            <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">Photoshop</h2>
+                            <div class="progress" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                            </div><br>
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">MySQL</h2>
                             <div class="progress" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
                                 
@@ -196,6 +246,11 @@ though I am still beginner.</p>
                             </div><br>
                         </div>
                         <div class="col-lg-6 col-md-12">
+                            <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">CSS</h2>
+                            <div class="progress" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%"></div>
+                            </div><br>
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">Bootstrap</h2>
                             <div class="progress" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
                                 
