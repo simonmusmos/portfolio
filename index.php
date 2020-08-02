@@ -208,9 +208,54 @@ though I am still beginner.</p>
                                 <!-- <a target="_blank" class="cta-btn text-color-main cta-btn-view" href="https://github.com/simonmusmos/Visual-Second" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a> -->
                             </div>
                         </div>
-                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
+                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200" style="margin-bottom: 20px;">
                             <div class="react-reveal project-wrapper__image border">
                                 <img src="img/nopreview.jpg"style="width: 80%">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="project-wrapper__text">
+                                <h3 class="project-wrapper__text-title projttl" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">ColorTrans</h3>
+                                <div data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                    <p class="mb-4 proj-desc">This software is made using Visual Studio. This is not just a simple "Hello World". It is one of my experiment about timer and colors. Click download to see it on actual.</p>
+                                </div>
+                                <a target="_blank" class="cta-btn cta-btn--hero cta-btn-live" href="project_files/ColorTrans.zip" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200" download>Download Software </a>
+                                <a target="_blank" class="cta-btn text-color-main cta-btn-view" href="https://github.com/simonmusmos/ColorTrans" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200" style="margin-bottom: 20px;">
+                            <div class="react-reveal project-wrapper__image border">
+                                <img src="img/color_trans.jpg"style="width: 80%">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="project-wrapper__text">
+                                <h3 class="project-wrapper__text-title projttl" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">D.A.T.A.</h3>
+                                <div data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                    <p class="mb-4 proj-desc">This commissioned software is made using Visual Studio. This is software is used to search in the archive of all studies from the organization that commissioned this project. It is also a confidential project.</p>
+                                </div>
+                                <!-- <a target="_blank" class="cta-btn cta-btn--hero cta-btn-live" href="project_files/ColorTrans.zip" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200" download>Download Software </a> -->
+                                <!-- <a target="_blank" class="cta-btn text-color-main cta-btn-view" href="https://github.com/simonmusmos/ColorTrans" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200" style="margin-bottom: 20px;">
+                            <div class="react-reveal project-wrapper__image border">
+                                <img src="img/cnhs.jpg"style="width: 80%">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="project-wrapper__text">
+                                <h3 class="project-wrapper__text-title projttl" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">Xeres</h3>
+                                <div data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                    <p class="mb-4 proj-desc">This is a homemade OS made using Visual Studio. This is a simple OS I used to comply on my school project. It currently have simple functionalities like creating files and folders, and Calculator. Other function is still under development.</p>
+                                </div>
+                                <a target="_blank" class="cta-btn cta-btn--hero cta-btn-live" href="project_files/Xeres.zip" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200" download>Download Software </a>
+                                <a target="_blank" class="cta-btn text-color-main cta-btn-view" href="https://github.com/simonmusmos/Xeres" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200" style="margin-bottom: 20px;">
+                            <div class="react-reveal project-wrapper__image border">
+                                <img src="img/os.jpg"style="width: 80%">
                             </div>
                         </div>
                     </div>
