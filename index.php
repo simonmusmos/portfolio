@@ -95,7 +95,7 @@
             </div>
         </div>
         <!-- </div> -->
-        <div style="position: absolute; bottom:-650px; background-color: #333; width: 100%; height: 20%; z-index: -200; margin-bottom: -20px;" data-aos="fade-up" data-aos-easing="ease-in-out" style="height: 650px"></div>
+        <div style="position: absolute; bottom:-650px; background-color: #333; width: 100%; height: 20%; z-index: -200; margin-bottom: -20px;" data-aos="fade-up" data-aos-easing="ease-in-out" style="height: 650px" data-aos-delay="200"></div>
         <section id="about" data-aos="fade-up" data-aos-easing="ease-in-out" style="height: 650px">
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="200">About me</h2>
@@ -107,20 +107,18 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div class="about-wrapper__info">
-                            <p class="about-wrapper__info-text" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400" style="font-weight: 600;">A dependable and hardworking Back-end Developer with a Bachelor’s
+                            <p class="about-wrapper__info-text" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400" style="font-weight: 600;">A dependable and hardworking Web Developer with a Bachelor’s
 Degree in the course of Information Technology. A good knowledge in
 software and web development. Flexible and can easily adjust on any
 given task or job
 .</p>
-                            <p class="about-wrapper__info-text" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="550" style="font-weight: 600;">Currently working as a Web Developer at Dynamic Markups IT Solutions. Most of the task
-revolves around economical transactions, meaning it is about money. The job is very
-crucial, because there must be no line of error since it is about money. Also
-doing Frontend little by little because I want to be a Full-stack Developer
-soon. Most of the projects were made using Native PHP and sometimes Laravel,
-though I am still beginner.</p>
-                            <span class="d-flex mt-3" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="650"> 
+                            <p class="about-wrapper__info-text" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="550" style="font-weight: 600;">Currently working as a Web Developer at Aspire Outsourcing Services. Most of the task
+revolves around handling users. The job is very
+crucial, because there must be no line of error. Also
+doing Frontend Development. Most of the projects were made using Laravel and React.</p>
+                            <!-- <span class="d-flex mt-3" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="650"> 
                                 <a target="_blank" class="cta-btn cta-btn--resume" href="resume/SimonMusmos.pdf" target="_blank">View Resume</a>
-                            </span>
+                            </span> -->
                         </div>
                     </div>
                 </div>
@@ -289,6 +287,12 @@ though I am still beginner.</p>
                                 
                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
                             </div><br>
+
+                            <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">React Native</h2>
+                            <div class="progress" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
+                            </div><br>
                         </div>
                         <div class="col-lg-6 col-md-12">
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">CSS</h2>
@@ -309,10 +313,14 @@ though I am still beginner.</p>
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">Laravel</h2>
                             <div class="progress" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
                                 
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%"></div>
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
                             </div><br>
                             
-                            
+                            <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">Git</h2>
+                            <div class="progress" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+                            </div><br>
                         </div>
                     </div>
                 </div>
