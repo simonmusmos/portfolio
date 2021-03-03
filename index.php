@@ -116,9 +116,9 @@ given task or job
 revolves around handling users. The job is very
 crucial, because there must be no line of error. Also
 doing Frontend Development. Most of the projects were made using Laravel and React.</p>
-                            <!-- <span class="d-flex mt-3" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="650"> 
-                                <a target="_blank" class="cta-btn cta-btn--resume" href="resume/SimonMusmos.pdf" target="_blank">View Resume</a>
-                            </span> -->
+                            <span class="d-flex mt-3" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="650"> 
+                                <a target="_blank" class="cta-btn cta-btn--resume" href="resume/Simon Musmos.pdf" target="_blank">View Resume</a>
+                            </span>
                         </div>
                     </div>
                 </div>
