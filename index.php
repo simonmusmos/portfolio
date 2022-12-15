@@ -372,7 +372,6 @@ doing Frontend Development. Most of the projects were made using Laravel and Rea
         </footer>
         
         <script src="js/main.js"></script>
-        <!-- <script src="js/vendor.js"></script> -->
         <script type="text/javascript" src="js/aos.js"></script>
         <script type="text/javascript">
             AOS.init();
