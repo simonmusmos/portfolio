@@ -108,14 +108,14 @@
                     <div class="col-md-6 col-sm-12">
                         <div class="about-wrapper__info">
                             <p class="about-wrapper__info-text" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400" style="font-weight: 600;">A dependable and hardworking Web Developer with a Bachelor’s
-Degree in the course of Information Technology. A good knowledge in
-software and web development. Flexible and can easily adjust on any
+Degree in the course of Information Technology. With 5 years of experience
+in software and web development. Flexible and can easily adjust on any
 given task or job
 .</p>
-                            <p class="about-wrapper__info-text" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="550" style="font-weight: 600;">Currently working as a Web Developer at Aspire Outsourcing Services. Most of the task
+                            <p class="about-wrapper__info-text" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="550" style="font-weight: 600;">Currently working as a PHP Developer at ShipERP Integrated Solutions. Most of the task
 revolves around handling users. The job is very
 crucial, because there must be no line of error. Also
-doing Frontend Development. Most of the projects were made using Laravel and React.</p>
+doing Frontend Development. Most of the projects were made using Laravel, React and Vue.JS.</p>
                             <span class="d-flex mt-3" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="650"> 
                                 <a target="_blank" class="cta-btn cta-btn--resume" href="resume/Simon Musmos - Resume.pdf" target="_blank">View Resume</a>
                             </span>
