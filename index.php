@@ -367,7 +367,7 @@ doing Frontend Development. Most of the projects were made using Laravel, React 
                     </a>
                 </div>
             <hr>
-            <p class="footer__text">© 2020 - Template developed by <a href="https://github.com/cobidev" target="_blank" rel="noopener noreferrer">Jacobo Martínez</a> and edited by <a href="https://github.com/simonmusmos" target="_blank" rel="noopener noreferrer">Simon Musmos</a></p>
+            <p class="footer__text">© 2024 - Template developed by <a href="https://github.com/cobidev" target="_blank" rel="noopener noreferrer">Jacobo Martínez</a> and edited by <a href="https://github.com/simonmusmos" target="_blank" rel="noopener noreferrer">Simon Musmos</a></p>
             </div>
         </footer>
         
