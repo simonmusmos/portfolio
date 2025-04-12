@@ -270,22 +270,22 @@ doing Frontend Development. Most of the projects were made using Laravel, React 
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">PHP</h2>
                             <div class="progress" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
                                 
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
                             </div><br>
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">Laravel</h2>
                             <div class="progress" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
                                 
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
                             </div><br>
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">Photoshop</h2>
                             <div class="progress" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
                                 
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
                             </div><br>
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">MySQL</h2>
                             <div class="progress" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
                                 
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
                             </div><br>
 
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">React Native</h2>
@@ -298,12 +298,12 @@ doing Frontend Development. Most of the projects were made using Laravel, React 
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">CSS</h2>
                             <div class="progress" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
                                 
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 70%"></div>
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
                             </div><br>
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">Bootstrap</h2>
                             <div class="progress" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
                                 
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%"></div>
                             </div><br>
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">Visual Basic</h2>
                             <div class="progress" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
@@ -313,13 +313,13 @@ doing Frontend Development. Most of the projects were made using Laravel, React 
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">Javascript/JQuery</h2>
                             <div class="progress" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
                                 
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
                             </div><br>
                             
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400">Git</h2>
                             <div class="progress" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200">
                                 
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
                             </div><br>
                         </div>
                     </div>
