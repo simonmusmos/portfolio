@@ -202,6 +202,21 @@ doing Frontend Development. Most of the projects were made using Laravel, React 
                         </div>
                         <div class="col-lg-4">
                             <div class="project-wrapper__text">
+                                <h3 class="project-wrapper__text-title projttl" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">Cavite State University - CCAT Campus Library System</h3>
+                                <div data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                    <p class="mb-4 proj-desc">A website for a CVSU-CCAT Library. Implemented QR Scanning to borrow and return books for quick and easy input. Crafted using Laravel.</p>
+                                </div>
+                                <!-- <a target="_blank" class="cta-btn cta-btn--hero cta-btn-live" href="https://xenia-web-8373482e284c.herokuapp.com/" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">See Live </a> -->
+                                <a target="_blank" disabled class="cta-btn text-color-main cta-btn-view" href="https://github.com/simonmusmos/qr_library" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200" style="margin-bottom: 20px;">
+                            <div class="react-reveal project-wrapper__image border">
+                                <img src="img/cvsu-library.png"style="width: 80%">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="project-wrapper__text">
                                 <h3 class="project-wrapper__text-title projttl" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">Metamorphosis API</h3>
                                 <div data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
                                     <p class="mb-4 proj-desc">An API made from Laravel. This is for the students that need a quick API for their websites. Currently have basic Login, Signup and Get Details. Other functions are currently under development.</p>
