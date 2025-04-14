@@ -130,17 +130,21 @@ doing Frontend Development. Most of the projects were made using Laravel, React 
                 <div class="project-wrapper">
                     <h2 class="section-title text-white" data-aos="zoom-in" data-aos-easing="ease-in-out">Awards</h2>
                     <div class="row">
-                        <div class="col-lg-4 col-md-12">
+                        <div class="col-lg-3 col-md-12">
                             <h1 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">2018</h1>
                             <h3 class="text-white" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">2018 FICT Fastest Programmer</h3><br>
                         </div>
-                        <div class="col-lg-4 col-md-12">
+                        <div class="col-lg-3 col-md-12">
                             <h1 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">2018</h1>
                             <h3 class="text-white" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">Clash of Codes Coding Wizard</h3><br>
                         </div>
-                        <div class="col-lg-4 col-md-12">
+                        <div class="col-lg-3 col-md-12">
                             <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">2019</h2>
                             <h3 class="text-white" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">2019 FICT Fastest Programmer</h3><br>
+                        </div>
+                        <div class="col-lg-3 col-md-12">
+                            <h2 class="text-white" style="font-weight: 600" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">2024</h2>
+                            <h3 class="text-white" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="400">ShipERP November 2024 Employee of the Month</h3><br>
                         </div>
                     </div>
                 </div>
