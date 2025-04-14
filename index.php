@@ -108,7 +108,7 @@
                     <div class="col-md-6 col-sm-12">
                         <div class="about-wrapper__info">
                             <p class="about-wrapper__info-text" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="400" style="font-weight: 600;">A dependable and hardworking Web Developer with a Bachelor’s
-Degree in the course of Information Technology. With 5 years of experience
+Degree in the course of Information Technology. With 7 years of experience
 in software and web development. Flexible and can easily adjust on any
 given task or job
 .</p>
@@ -164,6 +164,36 @@ doing Frontend Development. Most of the projects were made using Laravel, React 
                         <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200" style="margin-bottom: 20px;">
                             <div class="react-reveal project-wrapper__image border">
                                 <img src="img/project1.jpg"style="width: 80%">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="project-wrapper__text">
+                                <h3 class="project-wrapper__text-title projttl" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">Xenia Women Health Center Website</h3>
+                                <div data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                    <p class="mb-4 proj-desc">A website for a women and children clinic. Crafted using Laravel.</p>
+                                </div>
+                                <a target="_blank" class="cta-btn cta-btn--hero cta-btn-live" href="https://xenia-web-8373482e284c.herokuapp.com/" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">See Live </a>
+                                <!-- <a target="_blank" class="cta-btn text-color-main cta-btn-view" href="https://github.com/simonmusmos/portfolio" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200" style="margin-bottom: 20px;">
+                            <div class="react-reveal project-wrapper__image border">
+                                <img src="img/xenia-web.png"style="width: 80%">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="project-wrapper__text">
+                                <h3 class="project-wrapper__text-title projttl" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="100">Kocutie Nails Website</h3>
+                                <div data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">
+                                    <p class="mb-4 proj-desc">A website for a nail artist in our area. Crafted using Laravel.</p>
+                                </div>
+                                <a target="_blank" class="cta-btn cta-btn--hero cta-btn-live" href="https://kocutie-web-8bcbe3fdcbc8.herokuapp.com/" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">See Live </a>
+                                <!-- <a target="_blank" class="cta-btn text-color-main cta-btn-view" href="https://github.com/simonmusmos/portfolio" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-delay="200">Source Code</a> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-delay="200" style="margin-bottom: 20px;">
+                            <div class="react-reveal project-wrapper__image border">
+                                <img src="img/kocutie-web.png"style="width: 80%">
                             </div>
                         </div>
                         <div class="col-lg-4">
