@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simon Musmos</title>
+  <meta name="description" content="Simon Musmos, full-stack and mobile developer. Seven years of turning ideas into working software.">
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --text: #ecebe8;
+      --gray: #8d8c93;
+      --dim: #34343a;
+      --line: rgba(236, 235, 232, .13);
+      --cobalt: #3a50ff;        /* fills: dot, line, nodes, button hover */
+      --cobalt-text: #93a0ff;   /* text-sized cobalt, legible on --bg */
+
+      --gutter: clamp(16px, 5vw, 64px);
+      --measure: 1240px;
+      --line-x: 50%;            /* where the experience timeline runs; the reel's dot drops onto it */
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scrollbar-width: thin; scrollbar-color: #444 var(--bg); }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'Host Grotesk', system-ui, sans-serif;
+      font-size: clamp(1rem, .97rem + .15vw, 1.08rem); line-height: 1.6;
+      font-variant-numeric: tabular-nums; -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+    }
+    /* Film grain over everything */
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: .14;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 -.25'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-size: 160px 160px;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px; }
+    a:not(.btn):not(.skip):hover { color: var(--cobalt-text); }
+    ::selection { background: var(--cobalt); color: #fff; }
+    :focus-visible { outline: 2px solid var(--cobalt-text); outline-offset: 3px; border-radius: 4px; }
+    h1, h2, h3 { font-weight: 600; letter-spacing: -.02em; }
+    .skip { position: absolute; left: -999px; top: 8px; z-index: 200; background: var(--text); color: var(--bg); padding: .5rem 1rem; }
+    .skip:focus { left: 8px; }
+    main { overflow-x: clip; }
+    .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 var(--gutter); }
+    .gray { color: var(--gray); }
+    .mask { display: block; overflow: hidden; padding-bottom: .12em; margin-bottom: -.12em; }
+    .mask > span { display: block; }
+
+    /* Rolling text on hover */
+    .rt-in { display: inline-grid; overflow: hidden; vertical-align: bottom; }
+    .rt-in > span { grid-area: 1 / 1; transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+    .rt-in > span + span { transform: translateY(105%); }
+    @media (hover: hover) {
+      a.rt:hover .rt-in > span:first-child { transform: translateY(-105%); }
+      a.rt:hover .rt-in > span + span { transform: none; }
+    }
+    a.rt:not(.btn) { text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat; background-origin: content-box; background-clip: content-box; }
+
+    /* ---------- Scene 1: the wordmark, which becomes the corner mark ---------- */
+    .hero { min-height: 100svh; display: flex; flex-direction: column; padding: clamp(24px, 6vh, 64px) 0 clamp(28px, 6vh, 56px); }
+    .mark { font-size: 14.4vw; line-height: .84; letter-spacing: -.05em; white-space: nowrap; font-weight: 600; transform-origin: 0 0; }
+    .mark .word { display: inline-block; overflow: hidden; padding-bottom: .05em; vertical-align: top; }
+    .mark .ch { display: inline-block; }
+    .mark a { color: inherit; text-decoration: none; }
+    .motion .mark { position: fixed; z-index: 60; margin: 0; }
+    /* a soft band at the top keeps the corner mark readable over whatever scrolls beneath it */
+    .motion main::before { content: ''; position: fixed; left: 0; right: 0; top: 0; height: 64px; z-index: 55; pointer-events: none; background: linear-gradient(var(--bg) 35%, rgba(11, 11, 13, 0)); }
+    .hero-rule { height: 1px; background: var(--line); margin-top: clamp(20px, 3vw, 36px); transform-origin: 0 50%; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px clamp(32px, 5vw, 80px); margin-top: clamp(24px, 4vw, 48px); align-items: start; }
+    .tagline { font-size: clamp(1.7rem, 1rem + 2.6vw, 3.2rem); font-weight: 500; line-height: 1.04; letter-spacing: -.035em; max-width: 14ch; }
+    .lede { color: var(--gray); max-width: 46ch; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; margin-top: 1.6rem; }
+    .btn { display: inline-flex; align-items: center; min-height: 46px; padding: .65rem 1.3rem; border-radius: 4px; background: var(--text); color: var(--bg); font-weight: 500; text-decoration: none; transition: background .25s, color .25s; }
+    .btn:hover { background: var(--cobalt); color: #fff; }
+    .link { font-weight: 500; }
+    .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: auto; padding-top: clamp(32px, 6vh, 64px); }
+    .stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; border-top: 1px solid var(--line); padding-top: 18px; }
+    .stats > div + div { margin-left: clamp(12px, 2vw, 24px); }
+    .stats dd { font-size: clamp(2.6rem, 1.6rem + 3.6vw, 5rem); font-weight: 500; line-height: .9; letter-spacing: -.05em; }
+    .stats dt { margin-top: .6rem; color: var(--gray); font-size: .95rem; }
+
+    /* ---------- Scene 2: the film. Tiles become a frame, the frame plays the reel, collapses to a dot ---------- */
+    .projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px 40px; margin-top: 32px; }
+    .project img { width: 100%; aspect-ratio: 1897 / 871; object-fit: cover; object-position: center top; border-radius: 10px; }
+    .cap .meta { color: var(--gray); font-size: .92rem; margin-top: 1rem; }
+    .cap h3 { font-size: 1.4rem; margin-top: .15rem; }
+    .cap p.desc { color: var(--gray); max-width: 52ch; margin-top: .25rem; }
+    .cap .go { display: inline-block; margin-top: .7rem; font-weight: 500; }
+    .cap .quiet { color: var(--gray); }
+    .film-head h2, .part h2 { font-size: clamp(2.4rem, 1.4rem + 3.4vw, 4.4rem); line-height: .98; letter-spacing: -.04em; }
+    section.film { padding-top: clamp(96px, 16vh, 160px); }
+
+    .stage { position: relative; height: 100svh; overflow: hidden;
+      --fw: min(76vw, 1100px, calc((100svh - 300px) * 2.178)); --fh: calc(var(--fw) / 2.178); --ft: calc(44svh - var(--fh) / 2); }
+    .frame { position: absolute; left: calc(50% - var(--fw) / 2); top: var(--ft); width: var(--fw); height: var(--fh); border-radius: 10px; overflow: hidden; }
+    .slide { position: absolute; inset: 0; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: brightness(.9) saturate(.92); }
+    .project img { filter: brightness(.9) saturate(.92); }
+    /* the frame's glow takes each project's own colour, so the page tints toward whatever is playing */
+    .stage { --ar: 58; --ag: 80; --ab: 255; }
+    .pill { position: fixed; left: 0; top: 0; z-index: 70; padding: .55rem 1rem; border-radius: 999px; background: var(--text); color: var(--bg); font-size: .88rem; font-weight: 500; white-space: nowrap; pointer-events: none; box-shadow: 0 8px 24px rgba(0, 0, 0, .35); transform: translate(-50%, -50%) scale(0); }
+    .frame.linked { cursor: pointer; }
+    .glow { position: absolute; left: 50%; top: calc(var(--ft) + var(--fh) / 2); width: calc(var(--fw) * 1.5); height: calc(var(--fh) * 2.1); transform: translate(-50%, -50%);
+      background: radial-gradient(closest-side, rgba(var(--ar), var(--ag), var(--ab), .36), rgba(var(--ar), var(--ag), var(--ab), .12) 55%, transparent); pointer-events: none; }
+    .frame { box-shadow: 0 0 0 1px rgba(236, 235, 232, .08); }
+    .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11, 11, 13, .55), rgba(11, 11, 13, .82)); }
+    .tiles { position: absolute; left: calc(50% - var(--fw) / 2); top: var(--ft); width: var(--fw); height: var(--fh); pointer-events: none; }
+    .tiles i { position: absolute; background-repeat: no-repeat; }
+    .s-title { position: absolute; left: calc(50% - var(--fw) / 2); top: calc(var(--ft) - 64px); margin: 0; font-size: 1.7rem; line-height: 1; letter-spacing: -.03em; white-space: nowrap; transform-origin: 0 0; z-index: 5; }
+    .s-count { position: absolute; right: calc(50% - var(--fw) / 2); top: calc(var(--ft) - 56px); color: var(--gray); }
+    .s-count .roll { display: inline-block; height: 1.25em; overflow: hidden; vertical-align: bottom; color: var(--text); }
+    .s-count .roll > span { display: block; }
+    .s-count .roll b { display: block; line-height: 1.25em; font-weight: 500; }
+    .caps { position: absolute; left: calc(50% - var(--fw) / 2); top: calc(var(--ft) + var(--fh) + 4px); width: var(--fw); }
+    .caps .cap { position: absolute; left: 0; top: 0; width: 100%; padding-top: 20px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4px 48px;
+      grid-template-areas: "meta desc" "title desc" "title go"; align-items: start; }
+    .caps .cap > * { margin: 0; }
+    .caps .cap .meta { grid-area: meta; }
+    .caps .cap h3 { grid-area: title; font-size: clamp(1.6rem, 1rem + 1.8vw, 2.7rem); line-height: 1; letter-spacing: -.035em; font-weight: 500; }
+    .caps .cap p.desc { grid-area: desc; }
+    .caps .cap .go { grid-area: go; justify-self: start; margin-top: .4rem; }
+    .dot { position: absolute; left: calc(50% - 6px); top: calc(var(--ft) + var(--fh) / 2 - 6px); width: 12px; height: 12px; border-radius: 50%; background: var(--cobalt); opacity: 0; z-index: 6; }
+    .drop { position: absolute; left: calc(var(--line-x) - 1px); top: calc(var(--ft) + var(--fh) / 2); bottom: 0; width: 2px; background: var(--cobalt); transform-origin: 50% 0; transform: scaleY(0); }
+
+    /* ---------- Scene 3: experience along the line the dot drew ---------- */
+    .xp { position: relative; padding: 0 0 clamp(80px, 14vh, 140px); }
+    .bead { position: absolute; left: calc(var(--line-x) - 6px); top: -6px; width: 12px; height: 12px; border-radius: 50%; background: var(--cobalt); box-shadow: 0 0 0 6px rgba(58, 80, 255, .18); z-index: 2; }
+    .xp-line { position: absolute; left: calc(var(--line-x) - 1px); top: 0; bottom: clamp(80px, 14vh, 140px); width: 2px; background: var(--cobalt); transform-origin: 50% 0; }
+    .xp-head { padding-top: clamp(32px, 6vh, 64px); display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; }
+    .xp-head h2 { width: calc(50% - 48px); }
+    .xp ol { list-style: none; margin-top: clamp(32px, 6vh, 64px); }
+    .xp li { position: relative; width: calc(50% - 48px); padding: 20px 0; }
+    .xp li:nth-child(odd) { text-align: right; }
+    .xp li:nth-child(even) { margin-left: calc(50% + 48px); }
+    .xp li::before { content: ''; position: absolute; top: 30px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--cobalt); transition: background .3s; }
+    .xp li:nth-child(odd)::before { right: -54px; }
+    .xp li:nth-child(even)::before { left: -54px; }
+    .xp li.on::before { background: var(--cobalt); }
+    .xp .when { color: var(--gray); font-size: .95rem; }
+    .xp h3 { font-size: clamp(1.2rem, 1rem + .8vw, 1.6rem); font-weight: 500; letter-spacing: -.02em; line-height: 1.2; margin-top: .15rem; }
+    .xp .org { color: var(--gray); }
+
+    /* ---------- Scene 4: statement, words light up as you read ---------- */
+    .statement { padding: clamp(48px, 10vh, 100px) 0; }
+    .statement p { font-size: clamp(1.8rem, 1rem + 3.2vw, 3.8rem); font-weight: 500; line-height: 1.08; letter-spacing: -.035em; max-width: 22ch; }
+    .statement .w { color: var(--dim); }
+    .no-motion .statement .w { color: var(--text); }
+
+    /* ---------- Lists: stack, recognition, more work ---------- */
+    section.part { padding-top: clamp(80px, 14vh, 140px); }
+    .part-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 24px; }
+    .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 clamp(32px, 5vw, 80px); }
+    .sub { font-size: 1.05rem; margin-bottom: 10px; color: var(--gray); font-weight: 500; }
+    .rows { list-style: none; }
+    .rows li { position: relative; display: grid; grid-template-columns: 7rem minmax(0, 1fr) auto; gap: 4px 20px; padding: 16px 0; align-items: baseline; }
+    .rows li > .rule { position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%; }
+    .rows li:last-child { border-bottom: 1px solid var(--line); }
+    .rows .when { color: var(--gray); font-size: .95rem; }
+    .rows h3 { font-size: 1.05rem; font-weight: 500; }
+    .rows p { color: var(--gray); }
+    .rows .end { text-align: right; color: var(--gray); }
+    .rows .end a { color: var(--text); font-weight: 500; }
+    .rows .end a + a { margin-left: 1rem; }
+    .rows.work li { grid-template-columns: minmax(0, 1fr) auto; }
+    .rows.stack li { grid-template-columns: 7rem minmax(0, 1fr); }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chips span { padding: .2rem .65rem; border: 1px solid var(--line); border-radius: 4px; font-size: .92rem; color: var(--gray); }
+    .chips span.main { border-color: rgba(236, 235, 232, .45); color: var(--text); }
+
+    /* ---------- Finale: the portrait forms from scattered dots ---------- */
+    .contact { padding-bottom: 28px; }
+    .contact .wrap > .grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 40px; align-items: center; }
+    .contact h2 { font-size: clamp(2.6rem, 1.2rem + 5.4vw, 6rem); line-height: .94; letter-spacing: -.045em; max-width: 12ch; }
+    .contact p { margin-top: 1.2rem; color: var(--gray); max-width: 44ch; }
+    .mail { display: inline-block; margin-top: 1.4rem; font-size: clamp(1.3rem, 1rem + 2vw, 2.4rem); font-weight: 500; letter-spacing: -.02em; overflow-wrap: anywhere; }
+    .socials { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin-top: 1.4rem; font-weight: 500; }
+    .portrait { position: relative; width: 100%; max-width: 420px; aspect-ratio: 1; justify-self: end; }
+    .portrait img, .portrait canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .portrait img { object-fit: cover; filter: grayscale(1); opacity: .85; }
+    .portrait.drawn img { visibility: hidden; }
+    .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: clamp(64px, 12vh, 120px); padding-top: 18px; border-top: 1px solid var(--line); color: var(--gray); font-size: .92rem; }
+    .foot a { text-decoration: none; }
+
+    @media (max-width: 860px) {
+      :root { --line-x: 28px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .stage { --fw: min(90vw, calc((100svh - 340px) * 2.178)); --ft: calc(38svh - var(--fh) / 2); }
+      .s-title { top: calc(var(--ft) - 52px); font-size: 1.4rem; }
+      .s-count { top: calc(var(--ft) - 46px); }
+      .caps .cap { grid-template-columns: 1fr; grid-template-areas: "meta" "title" "desc" "go"; gap: 6px; padding-top: 16px; }
+      .xp-head { padding-left: 56px; }
+      .xp-head h2 { width: auto; }
+      .xp li, .xp li:nth-child(odd), .xp li:nth-child(even) { width: auto; margin-left: 56px; text-align: left; padding-right: 0; }
+      .xp li:nth-child(odd)::before, .xp li:nth-child(even)::before { left: -34px; right: auto; }
+      .split, .contact .wrap > .grid { grid-template-columns: 1fr; gap: 48px; }
+      .portrait { justify-self: start; max-width: 300px; }
+      .projects { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .stats dd { font-size: 2.4rem; }
+      .rows li, .rows.stack li { grid-template-columns: 1fr; }
+      .rows .end { text-align: left; }
+      .link, .cap .go, .rows .end a, .socials a, .foot a { display: inline-block; padding: .6rem 0; margin-top: -.6rem; margin-bottom: -.6rem; }
+    }
+  </style>
+</head>
+<body class="no-motion">
+  <a class="skip" href="#work">Skip to work</a>
+
+  <main>
+    <!-- Scene 1 -->
+    <section class="hero" id="top">
+      <div class="wrap">
+        <h1 class="mark" aria-label="Simon Musmos"><span class="word">Simon Musmos</span></h1>
+        <div class="hero-rule" aria-hidden="true"></div>
+        <div class="hero-grid">
+          <p class="tagline">Your backlog's worst nightmare.</p>
+          <div>
+            <p class="lede">Full-stack and mobile developer. Seven years of shipping PHP and Laravel for a living, five products of my own built end to end, and now Senior Mobile and Web Developer at Intra Research.</p>
+            <div class="actions">
+              <a class="btn" href="#work">See the work</a>
+              <a class="link" href="resume/Simon Musmos - Resume.pdf" target="_blank" rel="noopener">Open resume</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrap stats-wrap" style="margin-top:auto;width:100%">
+        <dl class="stats">
+          <div><dt>years professional</dt><dd data-to="7" data-suffix="+">7+</dd></div>
+          <div><dt>products of my own</dt><dd data-to="5">5</dd></div>
+          <div><dt>awards</dt><dd data-to="5">5</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Scene 2: plain list without motion; JS turns it into the film -->
+    <section class="film" id="work" aria-labelledby="work-title">
+      <div class="wrap film-head">
+        <h2 id="work-title">Selected work</h2>
+        <div class="projects">
+          <article class="project"><img src="img/zodias.png" alt="Zodias home page"><div class="cap"><p class="meta">TypeScript, AI video</p><h3>Zodias</h3><p class="desc">Turns a screen recording of your app into a vertical promo for TikTok, Reels and Shorts in under five minutes, with captions, music and post text.</p><a class="go" href="https://zodias.app" target="_blank" rel="noopener">Visit Zodias</a></div></article>
+          <article class="project"><img src="img/prepr.png" alt="Prepr home page"><div class="cap"><p class="meta">TypeScript, AI</p><h3>Prepr</h3><p class="desc">A live interview copilot that hears the question and suggests an answer built from your resume and the role.</p><a class="go" href="https://preprhq.com" target="_blank" rel="noopener">Visit Prepr</a></div></article>
+          <article class="project"><img src="img/uijudge.png" alt="UIJudge home page"><div class="cap"><p class="meta">React, Firebase, AI</p><h3>UIJudge.app</h3><p class="desc">Instant AI feedback on a UI, or a clear verdict between two designs on hierarchy, spacing, color and accessibility.</p><a class="go" href="https://uijudge.app" target="_blank" rel="noopener">Visit UIJudge</a></div></article>
+          <article class="project"><img src="img/meetz_app.png" alt="Meetz home page"><div class="cap"><p class="meta">Android, mobile</p><h3>Meetz</h3><p class="desc">An Android app that finds car meets near you and gets you there.</p><a class="go" href="https://tambay.vercel.app" target="_blank" rel="noopener">Visit Meetz</a></div></article>
+          <article class="project"><img src="img/nomad.png" alt="Nomad app screens" loading="lazy"><div class="cap"><p class="meta">Flutter, Firebase</p><h3>Nomad</h3><p class="desc">A mobile app for recording and tracking your routes on the go.</p><span class="go quiet">In progress</span></div></article>
+          <article class="project"><img src="img/cvsu-library.png" alt="CVSU-CCAT library system" loading="lazy"><div class="cap"><p class="meta">Laravel, QR codes, MySQL</p><h3>CVSU-CCAT Library System</h3><p class="desc">Library management with QR scanning for borrowing and returning books.</p><a class="go" href="https://github.com/simonmusmos/qr_library" target="_blank" rel="noopener">View source</a></div></article>
+          <article class="project"><img src="img/futagawa-foods.png" alt="Futagawa Foods ERP" loading="lazy"><div class="cap"><p class="meta">CodeIgniter, PHP</p><h3>Futagawa Foods ERP</h3><p class="desc">A legacy desktop system rebuilt as a full web-based ERP.</p><span class="go quiet">Private client</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 3 -->
+    <section class="xp" id="experience" aria-labelledby="experience-title">
+      <div class="xp-line" aria-hidden="true"></div>
+      <span class="bead" aria-hidden="true"></span>
+      <div class="wrap">
+        <div class="xp-head"><h2 id="experience-title">Experience</h2><a class="link" href="resume/Simon Musmos - Resume.pdf" target="_blank" rel="noopener">Full resume</a></div>
+        <ol>
+          <li><p class="when">2026 to now</p><h3>Senior Mobile and Web Developer</h3><p class="org">Intra Research</p></li>
+          <li><p class="when">2023 to 2026</p><h3>PHP Developer</h3><p class="org">ShipERP Integrated Solutions</p></li>
+          <li><p class="when">2022 to 2023</p><h3>Web Developer</h3><p class="org">ThinkBIT Solutions</p></li>
+          <li><p class="when">2020 to 2022</p><h3>Software Engineer</h3><p class="org">Aspire Outsourcing Solutions</p></li>
+          <li><p class="when">2019 to 2020</p><h3>Web Developer</h3><p class="org">Dynamic Markups</p></li>
+          <li><p class="when">2017 to now</p><h3>Freelance developer</h3><p class="org">Shops, clinics and kiosks</p></li>
+          <li><p class="when">2019</p><h3>BS Information Technology</h3><p class="org">Cavite State University, CCAT</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Scene 4 -->
+    <section class="statement" aria-label="About">
+      <div class="wrap"><p>Seven years shipping for other people. Five products shipped for myself. Hand me the backlog and watch it shrink.</p></div>
+    </section>
+
+    <section class="part" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="part-head"><h2 id="about-title">Stack and recognition</h2></div>
+        <div class="split">
+          <div>
+            <h3 class="sub">What I build with</h3>
+            <ul class="rows stack">
+              <li><span class="when">Back end</span><div class="chips"><span class="main">PHP</span><span class="main">Laravel</span><span>Lumen</span><span>CodeIgniter</span><span>REST APIs</span></div></li>
+              <li><span class="when">Front end</span><div class="chips"><span class="main">JavaScript</span><span class="main">TypeScript</span><span class="main">Vue.js</span><span class="main">React</span><span>Livewire</span><span>Tailwind</span><span>jQuery</span></div></li>
+              <li><span class="when">Mobile</span><div class="chips"><span class="main">Flutter</span><span>Android Studio</span><span>React Native</span></div></li>
+              <li><span class="when">Data, tools</span><div class="chips"><span class="main">MySQL</span><span class="main">Firebase</span><span>MongoDB</span><span>Git</span><span>Postman</span><span>Linux</span></div></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="sub">Recognition</h3>
+            <ul class="rows">
+              <li><span class="when">Nov 2024</span><h3>Employee of the Month</h3><span class="end">ShipERP</span></li>
+              <li><span class="when">2019</span><h3>Hack4gov national finalist</h3><span class="end">DCIT NCERT</span></li>
+              <li><span class="when">2019</span><h3>Fastest Programmer</h3><span class="end">FICT</span></li>
+              <li><span class="when">2018</span><h3>Coding Wizard</h3><span class="end">Clash of Codes</span></li>
+              <li><span class="when">2018</span><h3>Fastest Programmer</h3><span class="end">FICT</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="part" id="more" aria-labelledby="more-title">
+      <div class="wrap">
+        <div class="part-head"><h2 id="more-title">More work</h2></div>
+        <ul class="rows work">
+          <li><div><h3>Metamorphosis API</h3><p>A public REST API with login, signup and user endpoints for student projects.</p></div><div class="end"><a href="https://github.com/simonmusmos/portfolio" target="_blank" rel="noopener">Source</a></div></li>
+          <li><div><h3>Visual pageant scorer</h3><p>Desktop scoring for SM Rosario pageant judges, with live tallying.</p></div><div class="end"><a href="https://github.com/simonmusmos/Visual-Second" target="_blank" rel="noopener">Source</a></div></li>
+          <li><div><h3>Xeres</h3><p>A homemade OS shell with file management and a calculator.</p></div><div class="end"><a href="project_files/Xeres.zip" download>Download</a><a href="https://github.com/simonmusmos/Xeres" target="_blank" rel="noopener">Source</a></div></li>
+          <li><div><h3>ColorTrans</h3><p>An experiment in timer-driven, animated color transitions.</p></div><div class="end"><a href="project_files/ColorTrans.zip" download>Download</a><a href="https://github.com/simonmusmos/ColorTrans" target="_blank" rel="noopener">Source</a></div></li>
+          <li><div><h3>D.A.T.A.</h3><p>A commissioned archive search system for an organization's study database.</p></div><div class="end">Confidential</div></li>
+          <li><div><h3>MLM and network sites</h3><p>Five networking websites built within a single year at ShipERP.</p></div><div class="end">Confidential</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Finale -->
+    <section class="part contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="grid">
+          <div>
+            <h2 id="contact-title">Let's build something together.</h2>
+            <p>Hiring, or have a project in mind? Send me an email and I'll get back to you.</p>
+            <a class="mail" href="mailto:simonmusmos@gmail.com">simonmusmos@gmail.com</a>
+            <div class="socials">
+              <a href="https://github.com/simonmusmos" target="_blank" rel="noopener">GitHub</a>
+              <a href="https://www.linkedin.com/in/simon-musmos-34324517b/" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://instagram.com/simonmusmos" target="_blank" rel="noopener">Instagram</a>
+              <a href="https://www.facebook.com/MusmosSimon" target="_blank" rel="noopener">Facebook</a>
+            </div>
+          </div>
+          <figure class="portrait">
+            <img src="img/profile1-cutout.png" alt="Portrait of Simon Musmos">
+            <canvas aria-hidden="true"></canvas>
+          </figure>
+        </div>
+        <div class="foot"><span>© 2026 Simon Musmos</span><a href="#top">Back to top</a></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+  (function () {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const motion = !reduce && window.gsap && window.ScrollTrigger;
+    const clamp = v => v < 0 ? 0 : v > 1 ? 1 : v;
+    const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+    /* The wordmark spans the column exactly */
+    const mark = $('.mark'), word = $('.word', mark);
+    function fitMark() {
+      // measure small: an inline-block can't grow past its container, so a big probe would be capped on phones
+      mark.style.fontSize = '20px';
+      const w = word.getBoundingClientRect().width, cs = getComputedStyle(mark.parentElement);
+      const room = mark.parentElement.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      mark.style.fontSize = Math.min(room / w * 20 * .995, 320).toFixed(2) + 'px';
+    }
+    fitMark();
+
+    $$('.rows li').forEach(li => li.insertAdjacentHTML('afterbegin', '<span class="rule" aria-hidden="true"></span>'));
+
+    /* Portrait halftone: light dots on the dark page, brightness sets the radius. Motion assembles it from scattered dots. */
+    const fig = $('.portrait'), photo = $('img', fig);
+    const P = { a: motion ? 0 : 1, dark: null, off: null, n: 70, px: -1e4, py: -1e4 };
+    let pc = null, pctx = null, pw = 0, pQueued = false;
+    function fitPortrait() {
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      pw = pc.clientWidth; pc.width = pc.height = Math.round(pw * dpr);
+      pctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function drawPortrait() {
+      pQueued = false;
+      if (!P.dark) return;
+      const n = P.n, cell = pw / n, path = new Path2D(), hot = new Path2D();
+      pctx.clearRect(0, 0, pw, pw);
+      for (let i = 0; i < n * n; i++) {
+        const d = P.dark[i];
+        if (d < .06) continue;
+        const r = Math.floor(i / n), c = i % n;
+        const q = clamp((P.a - P.off[i * 3 + 2]) / .55), e = 1 - Math.pow(1 - q, 3);
+        if (q <= 0) continue;
+        let x = (c + .5) * cell + P.off[i * 3] * pw * (1 - e), y = (r + .5) * cell + P.off[i * 3 + 1] * pw * (1 - e);
+        const dx = x - P.px, dy = y - P.py, dd = Math.hypot(dx, dy);
+        let h = false;
+        if (dd < 70) { const t = 1 - dd / 70; x += dx / (dd || 1) * t * 9; y += dy / (dd || 1) * t * 9; h = t > .3; }
+        const rad = cell * .58 * Math.pow(d, .75) * (.3 + .7 * e) * Math.min(1, (n - r) / 8);
+        if (rad < .3) continue;
+        const p = h ? hot : path;
+        p.moveTo(x + rad, y); p.arc(x, y, rad, 0, Math.PI * 2);
+      }
+      pctx.fillStyle = '#ecebe8'; pctx.fill(path);
+      pctx.fillStyle = '#3a50ff'; pctx.fill(hot);
+    }
+    const queuePortrait = () => { if (!pQueued && pctx) { pQueued = true; requestAnimationFrame(drawPortrait); } };
+    function sample() {
+      const n = P.n, off = document.createElement('canvas'); off.width = off.height = n;
+      const o = off.getContext('2d', { willReadFrequently: true });
+      o.drawImage(photo, 0, 0, n, n);
+      let px; try { px = o.getImageData(0, 0, n, n).data; } catch (e) { return; }
+      P.dark = new Float32Array(n * n); P.off = new Float32Array(n * n * 3);
+      let seed = 3; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+      for (let i = 0; i < n * n; i++) {
+        const lum = (.299 * px[i * 4] + .587 * px[i * 4 + 1] + .114 * px[i * 4 + 2]) / 255;
+        P.dark[i] = clamp((lum - .1) / .75) * (px[i * 4 + 3] / 255);
+        P.off[i * 3] = (rnd() - .5) * 1.6; P.off[i * 3 + 1] = (rnd() - .5) * 1.6; P.off[i * 3 + 2] = rnd() * .45;
+      }
+      pc = $('canvas', fig); pctx = pc.getContext('2d'); fitPortrait();
+      fig.classList.add('drawn'); drawPortrait();
+    }
+    if (photo.complete && photo.naturalWidth) sample(); else photo.addEventListener('load', sample);
+    fig.addEventListener('pointermove', e => { const b = fig.getBoundingClientRect(); P.px = e.clientX - b.left; P.py = e.clientY - b.top; queuePortrait(); });
+    fig.addEventListener('pointerleave', () => { P.px = P.py = -1e4; queuePortrait(); });
+    addEventListener('resize', () => { fitMark(); if (pctx) { fitPortrait(); drawPortrait(); } });
+
+    if (!motion) return;
+
+    document.body.classList.replace('no-motion', 'motion');
+    document.documentElement.classList.add('motion');
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    const vh = () => innerHeight, small = () => innerWidth <= 860;
+
+    let lenis = null;
+    if (window.Lenis) {
+      lenis = new Lenis({ lerp: .09 });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(t => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+    const goTo = y => lenis ? lenis.scrollTo(y, { duration: 1.4 }) : scrollTo({ top: y, behavior: 'smooth' });
+    $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+      const t = $(a.getAttribute('href')); if (!t) return;
+      e.preventDefault(); goTo(t.id === 'top' ? 0 : t.getBoundingClientRect().top + scrollY);
+    }));
+
+    // rolling text on links and buttons
+    $$('.btn, .link, .go:not(.quiet), .socials a, .foot a, .rows .end a, .mail').forEach(a => {
+      const t = a.textContent.trim(), w = document.createElement('span'), one = document.createElement('span'), two = document.createElement('span');
+      w.className = 'rt-in'; one.textContent = two.textContent = t; two.setAttribute('aria-hidden', 'true');
+      w.append(one, two); a.textContent = ''; a.append(w); a.classList.add('rt');
+    });
+
+    /* ===== Scene 1: letters rise, the rule draws, the copy follows; scrolling shrinks the wordmark into the corner ===== */
+    word.setAttribute('aria-hidden', 'true');
+    word.innerHTML = [...word.textContent].map(c => '<span class="ch">' + (c === ' ' ? '&nbsp;' : c) + '</span>').join('');
+    const markLink = document.createElement('a'); markLink.href = '#top'; markLink.setAttribute('aria-label', 'Simon Musmos, back to top');
+    markLink.addEventListener('click', e => { e.preventDefault(); goTo(0); });
+    word.parentNode.insertBefore(markLink, word); markLink.appendChild(word);
+    const spacer = document.createElement('div'); spacer.setAttribute('aria-hidden', 'true');
+    mark.parentNode.insertBefore(spacer, mark);
+    let MK = null;
+    function placeMark() {
+      mark.style.position = 'static'; mark.style.transform = ''; spacer.style.height = '0px';
+      fitMark();
+      const b = mark.getBoundingClientRect(), wb = word.getBoundingClientRect();
+      spacer.style.height = b.height + 'px';
+      mark.style.position = ''; mark.style.left = b.left + 'px'; mark.style.top = (b.top + scrollY) + 'px'; mark.style.width = b.width + 'px';
+      const targetH = 22; // the corner mark's letter height
+      // finish shrinking before the tagline below scrolls up into the corner
+      MK = { top: b.top + scrollY, left: b.left, k: targetH / wb.height, dist: Math.max(120, Math.min(vh() * .36, tagline.getBoundingClientRect().top + scrollY - 90)) };
+    }
+    function moveMark() {
+      if (!MK) return;
+      const p = clamp(scrollY / MK.dist), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      const k = 1 + (MK.k - 1) * e, x = (18 - MK.left) * e, y = (16 - MK.top) * e;
+      mark.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) scale(' + k.toFixed(4) + ')';
+    }
+    gsap.set('.ch', { yPercent: 112 });
+    gsap.set('.hero-rule', { scaleX: 0 });
+    const lede = $('.lede'), tagline = $('.tagline');
+    gsap.set([tagline, lede, '.actions', '.stats'], { opacity: 0 });
+    function splitLines(el) {
+      const text = el.textContent.trim();
+      el.innerHTML = text.split(/\s+/).map(w => '<span class="wd">' + w + '</span>').join(' ');
+      const lines = []; let top = null;
+      $$('.wd', el).forEach(w => { if (w.offsetTop !== top) { top = w.offsetTop; lines.push([]); } lines[lines.length - 1].push(w.textContent); });
+      el.innerHTML = lines.map(l => '<span class="mask"><span>' + l.join(' ') + '</span></span>').join('');
+      return { spans: $$('.mask > span', el), restore: () => { el.textContent = text; } };
+    }
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+      placeMark(); moveMark(); ScrollTrigger.refresh();
+      const t = splitLines(tagline), l = splitLines(lede);
+      gsap.set([tagline, lede], { opacity: 1 });
+      const counts = $$('.stats dd').map(dd => ({ dd, to: +dd.dataset.to, s: dd.dataset.suffix || '', v: 0 }));
+      counts.forEach(c => c.dd.textContent = '0');
+      gsap.timeline({ delay: .1, defaults: { ease: 'power4.out' } })
+        .to('.ch', { yPercent: 0, duration: 1.2, stagger: .04 })
+        .to('.hero-rule', { scaleX: 1, duration: 1.1, ease: 'power3.inOut' }, '-=.8')
+        .fromTo(t.spans, { yPercent: 108 }, { yPercent: 0, duration: 1, stagger: .08, onComplete: t.restore }, '-=.7')
+        .fromTo(l.spans, { yPercent: 108 }, { yPercent: 0, duration: 1, stagger: .05, onComplete: l.restore }, '<+.1')
+        .fromTo('.actions', { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: 'power3.out' }, '-=.7')
+        .fromTo('.stats', { opacity: 0 }, { opacity: 1, duration: .4 }, '-=.6')
+        .to(counts, { v: i => counts[i].to, duration: 1.4, ease: 'power2.out', stagger: .1,
+          onUpdate: () => counts.forEach(c => { c.dd.textContent = Math.round(c.v) + (c.v >= c.to ? c.s : ''); }) }, '<');
+    });
+    addEventListener('scroll', moveMark, { passive: true });
+
+    /* ===== Scene 2: one pinned stage. Tiles fly together into the frame, "Selected work" lands on it and moves to its corner,
+       the frame plays each project, then flattens to a strip, shrinks to a dot, and the dot drops into the experience line ===== */
+    const film = $('.film'), projects = $$('.project', film);
+    const n = projects.length;
+    const stage = document.createElement('div'); stage.className = 'stage';
+    const frame = document.createElement('div'); frame.className = 'frame';
+    const caps = document.createElement('div'); caps.className = 'caps';
+    const slides = projects.map((p, i) => {
+      const s = document.createElement('div'); s.className = 'slide';
+      s.appendChild($('img', p)); frame.appendChild(s);
+      const c = $('.cap', p); caps.appendChild(c);
+      return s;
+    });
+    const shade = document.createElement('div'); shade.className = 'shade'; frame.appendChild(shade);
+    const tilesBox = document.createElement('div'); tilesBox.className = 'tiles'; tilesBox.setAttribute('aria-hidden', 'true');
+    const title = $('#work-title');
+    title.classList.add('s-title');
+    const count = document.createElement('div'); count.className = 's-count'; count.setAttribute('aria-hidden', 'true');
+    count.innerHTML = '<span class="roll"><span>' + projects.map((p, i) => '<b>' + String(i + 1).padStart(2, '0') + '</b>').join('') + '</span></span> / ' + String(n).padStart(2, '0');
+    const dot = document.createElement('span'); dot.className = 'dot'; dot.setAttribute('aria-hidden', 'true');
+    const drop = document.createElement('span'); drop.className = 'drop'; drop.setAttribute('aria-hidden', 'true');
+    const glow = document.createElement('div'); glow.className = 'glow'; glow.setAttribute('aria-hidden', 'true');
+    stage.append(glow, frame, tilesBox, title, count, caps, dot, drop);
+    film.innerHTML = ''; film.appendChild(stage);
+    film.style.paddingTop = '0';
+    const capEls = $$('.cap', caps), roll = $('.roll > span', count);
+
+    // tiles: the first screenshot cut into a grid
+    const TC = small() ? 5 : 8, TR = small() ? 3 : 4;
+    let seed = 9; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+    const tiles = Array.from({ length: TC * TR }, (_, k) => {
+      const el = document.createElement('i'); tilesBox.appendChild(el);
+      return { el, c: k % TC, r: Math.floor(k / TC), x: (rnd() - .5) * 2.2, y: (rnd() - .5) * 2.4, s: .25 + rnd() * .5, d: rnd() * .5 };
+    });
+    const firstImg = $('img', slides[0]);
+    function placeTiles() {
+      const W = tilesBox.clientWidth, H = tilesBox.clientHeight, nw = firstImg.naturalWidth || 1920, nh = firstImg.naturalHeight || 966;
+      const sc = Math.max(W / nw, H / nh), bw = nw * sc, bh = nh * sc, ox = (W - bw) / 2, tw = W / TC, th = H / TR;
+      tiles.forEach(t => Object.assign(t.el.style, { left: t.c * tw + 'px', top: t.r * th + 'px', width: tw + .7 + 'px', height: th + .7 + 'px',
+        backgroundImage: 'url("' + firstImg.currentSrc + '")', backgroundSize: bw + 'px ' + bh + 'px', backgroundPosition: (ox - t.c * tw) + 'px ' + (-t.r * th) + 'px' }));
+    }
+    firstImg.addEventListener('load', placeTiles);
+
+    // where the big title sits while it is centred on the assembled frame
+    const titleBig = () => {
+      const s = (frame.offsetWidth * (small() ? .78 : .62)) / title.offsetWidth;
+      return { s, x: frame.offsetLeft + frame.offsetWidth / 2 - title.offsetLeft - title.offsetWidth * s / 2,
+               y: frame.offsetTop + frame.offsetHeight / 2 - title.offsetTop - title.offsetHeight * s / 2 };
+    };
+    const lineDx = () => { const xl = $('.xp-line'); return xl.getBoundingClientRect().left + 1 - (dot.getBoundingClientRect().left + 6) + (gsap.getProperty(dot, 'x') || 0); };
+
+    // each screenshot's dominant colour, ignoring near-white and near-black, normalised to a mid lightness so every glow reads at the same strength
+    const tint = slides.map(() => [58, 80, 255]);
+    function sampleTint(img, i) {
+      const c = document.createElement('canvas'); c.width = 32; c.height = 16;
+      const x = c.getContext('2d', { willReadFrequently: true });
+      try { x.drawImage(img, 0, 0, 32, 16); } catch (e) { return; }
+      let d; try { d = x.getImageData(0, 0, 32, 16).data; } catch (e) { return; }
+      // only clearly coloured pixels vote; pale and grey areas would wash the hue out
+      let r = 0, g = 0, b = 0, wsum = 0;
+      for (let k = 0; k < d.length; k += 4) {
+        const R = d[k] / 255, G = d[k + 1] / 255, B = d[k + 2] / 255, mx = Math.max(R, G, B), mn = Math.min(R, G, B), l = (mx + mn) / 2;
+        const sat = mx === mn ? 0 : (mx - mn) / (1 - Math.abs(2 * l - 1));
+        if (sat < .35 || l < .15 || l > .85) continue;
+        r += R * sat; g += G * sat; b += B * sat; wsum += sat;
+      }
+      if (wsum < 1.5) return; // too little colour on the page: keep the cobalt glow
+      r /= wsum; g /= wsum; b /= wsum;
+      // keep the hue, set one saturation and lightness for every project so the glows read at equal strength
+      const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+      let h = 0;
+      if (mx !== mn) { const dd = mx - mn; h = mx === r ? ((g - b) / dd) % 6 : mx === g ? (b - r) / dd + 2 : (r - g) / dd + 4; h *= 60; if (h < 0) h += 360; }
+      const S = .7, L = .52, C = (1 - Math.abs(2 * L - 1)) * S, X = C * (1 - Math.abs((h / 60) % 2 - 1)), m = L - C / 2;
+      const [r1, g1, b1] = h < 60 ? [C, X, 0] : h < 120 ? [X, C, 0] : h < 180 ? [0, C, X] : h < 240 ? [0, X, C] : h < 300 ? [X, 0, C] : [C, 0, X];
+      tint[i] = [r1, g1, b1].map(v => Math.round((v + m) * 255));
+    }
+    slides.forEach((s, i) => { const im = $('img', s); if (im.complete && im.naturalWidth) sampleTint(im, i); else im.addEventListener('load', () => { sampleTint(im, i); ScrollTrigger.refresh(); }); });
+    const tintTo = i => ({ '--ar': () => tint[i][0], '--ag': () => tint[i][1], '--ab': () => tint[i][2] });
+
+    gsap.set(slides.slice(1), { clipPath: 'inset(100% 0% 0% 0%)' });
+    gsap.set(slides[0], { opacity: 0 });
+    gsap.set(capEls, { autoAlpha: 0 });
+    gsap.set([count], { autoAlpha: 0 });
+    gsap.set(shade, { opacity: 0 });
+    gsap.set(glow, { opacity: 0 });
+
+    const T = gsap.timeline({ defaults: { ease: 'none' },
+      scrollTrigger: { trigger: stage, start: 'top top', end: () => '+=' + vh() * (small() ? 8 : 9.5), pin: true, scrub: .7, invalidateOnRefresh: true,
+        onRefresh: placeTiles } });
+    // 0 → 1.4: tiles converge
+    tiles.forEach(t => T.fromTo(t.el,
+      { x: () => t.x * tilesBox.clientWidth, y: () => t.y * tilesBox.clientHeight * .9, scale: t.s, opacity: 0, filter: small() ? 'none' : 'blur(12px)' },
+      { x: 0, y: 0, scale: 1, opacity: 1, filter: 'blur(0px)', duration: .9, ease: 'power3.out' }, t.d));
+    T.fromTo(stage, tintTo(0), { ...tintTo(0), duration: .01 }, 0)
+     .to(glow, { opacity: 1, duration: 1.2 }, .2)
+     .set(slides[0], { opacity: 1 }, 1.4).set(tilesBox, { autoAlpha: 0 }, 1.42);
+    // 1.0 → 1.6: the title lands centred on the image over a shade
+    T.fromTo(title, { x: () => titleBig().x, y: () => titleBig().y + 40, scale: () => titleBig().s, opacity: 0 },
+                    { x: () => titleBig().x, y: () => titleBig().y, scale: () => titleBig().s, opacity: 1, duration: .5, ease: 'power3.out' }, 1.0)
+     .to(shade, { opacity: 1, duration: .5 }, 1.0)
+    // 1.9 → 2.6: title travels to its corner, the shade lifts, the first caption rises
+     .to(title, { x: 0, y: 0, scale: 1, duration: .7, ease: 'power3.inOut' }, 1.9)
+     .to(shade, { opacity: 0, duration: .5 }, 2.0)
+     .to(count, { autoAlpha: 1, duration: .3 }, 2.3)
+     .fromTo(capEls[0], { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: .4, ease: 'power3.out' }, 2.3);
+    // 3 → : the reel. Each next project wipes up through the frame; captions hand over; the counter rolls
+    const STEP = 1.1;
+    for (let i = 1; i < n; i++) {
+      const at = 2.8 + i * STEP;
+      T.fromTo(slides[i], { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .7, ease: 'power3.inOut' }, at)
+       .fromTo($('img', slides[i]), { scale: 1.25 }, { scale: 1, duration: .9, ease: 'power3.out' }, at)
+       .to($('img', slides[i - 1]), { scale: .92, yPercent: -6, duration: .7, ease: 'power3.inOut' }, at)
+       .to(capEls[i - 1], { autoAlpha: 0, y: -20, duration: .3 }, at)
+       .fromTo(capEls[i], { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: .4, ease: 'power3.out' }, at + .35)
+       .to(roll, { y: () => -i * roll.firstElementChild.offsetHeight, duration: .5, ease: 'power3.inOut' }, at + .1)
+       .to(stage, { ...tintTo(i), duration: .7, ease: 'power2.inOut' }, at);
+    }
+    // collapse: the frame flattens to a strip, shrinks to a dot; the dot moves onto the line and drops
+    const end = 2.8 + n * STEP + .4;
+    T.to([title, count, capEls[n - 1]], { autoAlpha: 0, y: -16, duration: .35 }, end)
+     .to(frame, { scaleY: .006, duration: .7, ease: 'power3.in' }, end + .1)
+     .to(frame, { scaleX: () => 12 / frame.offsetWidth, borderRadius: 0, duration: .6, ease: 'power3.inOut' }, end + .8)
+     .to(stage, { '--ar': 58, '--ag': 80, '--ab': 255, duration: .8 }, end + .1)
+     .to(glow, { opacity: 0, duration: .9 }, end + .9)
+     .to(dot, { opacity: 1, duration: .15 }, end + 1.3)
+     .to(frame, { opacity: 0, duration: .15 }, end + 1.3)
+     .to(dot, { x: lineDx, duration: .5, ease: 'power2.inOut' }, end + 1.5)
+     // the dot falls to the bottom edge, drawing the line behind it; below, the experience line picks it up
+     .to(dot, { y: () => stage.offsetHeight - (dot.offsetTop + 6), duration: .9, ease: 'power2.in' }, end + 2.0)
+     .to(drop, { scaleY: 1, duration: .9, ease: 'power2.in' }, end + 2.0);
+    // the drop starts where the dot ends up
+    gsap.set(drop, { x: 0 });
+
+    // pointer: a pill names the playing project and the frame opens it
+    // project i is fully in from 2.8 + i * STEP + .35 on the timeline
+    const active = () => Math.max(0, Math.min(n - 1, Math.floor((T.time() - 3.15) / STEP)));
+    const hrefOf = i => { const a = $('a.go', capEls[i]); return a ? a.href : null; };
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      const pill = document.createElement('div'); pill.className = 'pill'; pill.setAttribute('aria-hidden', 'true'); document.body.appendChild(pill);
+      const px = gsap.quickTo(pill, 'x', { duration: .35, ease: 'power3' }), py = gsap.quickTo(pill, 'y', { duration: .35, ease: 'power3' });
+      let over = false;
+      const label = () => {
+        const h = hrefOf(active());
+        frame.classList.toggle('linked', !!h);
+        pill.textContent = h ? 'Visit ' + new URL(h).hostname.replace(/^www\./, '') : $('h3', capEls[active()]).textContent;
+      };
+      frame.addEventListener('pointerenter', e => { over = true; label(); gsap.set(pill, { x: e.clientX, y: e.clientY }); gsap.to(pill, { scale: 1, duration: .35, ease: 'back.out(2)' }); });
+      frame.addEventListener('pointermove', e => { px(e.clientX); py(e.clientY); });
+      frame.addEventListener('pointerleave', () => { over = false; gsap.to(pill, { scale: 0, duration: .25 }); });
+      T.eventCallback('onUpdate', () => { if (over) label(); });
+      frame.addEventListener('click', () => { const h = hrefOf(active()); if (h) open(h, '_blank', 'noopener'); });
+    }
+
+    /* ===== Scene 3: the line keeps drawing down through the experience; each node fills as it passes ===== */
+    const xp = $('.xp'), xline = $('.xp-line'), xrows = $$('.xp li'), bead = $('.bead');
+    gsap.fromTo(xline, { scaleY: 0 }, { scaleY: 1, ease: 'none',
+      scrollTrigger: { trigger: xp, start: 'top bottom', end: 'bottom 70%', scrub: true,
+        onUpdate: self => {
+          const tip = self.progress * xline.offsetHeight;
+          bead.style.transform = 'translateY(' + tip.toFixed(1) + 'px)';
+          xrows.forEach(li => li.classList.toggle('on', li.offsetTop + 36 <= tip));
+        } } });
+    xrows.forEach((li, i) => gsap.fromTo(li, { x: small() ? 30 : (i % 2 ? 50 : -50), opacity: 0 }, { x: 0, opacity: 1, ease: 'power2.out',
+      scrollTrigger: { trigger: li, start: 'top 88%', end: 'top 60%', scrub: true } }));
+
+    /* ===== Scene 4: statement words light up one by one ===== */
+    const st = $('.statement p');
+    st.innerHTML = st.textContent.trim().split(/\s+/).map(w => '<span class="w">' + w + '</span>').join(' ');
+    gsap.to($$('.w', st), { color: '#ecebe8', stagger: .1, ease: 'none',
+      scrollTrigger: { trigger: st, start: 'top 80%', end: 'bottom 45%', scrub: true } });
+
+    /* Headings rise from a mask; list rules draw; chips gather */
+    $$('.part h2, .xp-head h2').forEach(h => {
+      h.innerHTML = '<span class="mask"><span>' + h.innerHTML + '</span></span>';
+      gsap.fromTo($('.mask > span', h), { yPercent: 110 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: h, start: 'top 95%', end: 'top 70%', scrub: true } });
+    });
+    $$('.rows li').forEach(li => gsap.fromTo($('.rule', li), { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: li, start: 'top 94%', end: 'top 72%', scrub: true } }));
+    $$('.rows.stack li').forEach(li => gsap.fromTo($$('.chips span', li), { y: 14, opacity: 0 }, { y: 0, opacity: 1, stagger: .06, ease: 'none',
+      scrollTrigger: { trigger: li, start: 'top 92%', end: 'top 70%', scrub: true } }));
+
+    /* ===== Finale: the dots gather into the portrait ===== */
+    ScrollTrigger.create({ trigger: fig, start: 'top 95%', end: 'center 55%', scrub: .5, onUpdate: self => { P.a = self.progress * 1.45; queuePortrait(); } });
+
+    ScrollTrigger.addEventListener('refreshInit', () => { mark.style.transform = ''; });
+    ScrollTrigger.addEventListener('refresh', () => { placeMark(); moveMark(); placeTiles(); });
+    addEventListener('load', () => ScrollTrigger.refresh());
+  })();
+  </script>
+</body>
+</html>
