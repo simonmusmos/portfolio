@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-22T00:00:00Z",
+  "title": "Design System: Simon Musmos",
+  "extensions": {
+    "colorMeta": {
+      "cobalt":    { "role": "primary", "displayName": "Build Cobalt",     "canonical": "#2340ff", "tonalRamp": ["#060d4d", "#0b1680", "#1224c4", "#2340ff", "#5268ff", "#8494ff", "#b8c1ff", "#e6e9ff"] },
+      "ground":    { "role": "neutral", "displayName": "Off-White Ground", "canonical": "#f5f5f3", "tonalRamp": ["#232322", "#3c3c3a", "#575754", "#757572", "#969693", "#b8b8b5", "#dbdbd8", "#f5f5f3"] },
+      "ink":       { "role": "neutral", "displayName": "Ink",              "canonical": "#111111", "tonalRamp": ["#111111", "#2b2b2b", "#474747", "#656565", "#868686", "#a9a9a9", "#cecece", "#efefef"] },
+      "gray":      { "role": "neutral", "displayName": "Quiet Gray",       "canonical": "#5f5f5b", "tonalRamp": ["#1e1e1c", "#353533", "#4b4b48", "#5f5f5b", "#80807b", "#a3a39f", "#c7c7c4", "#ebebe9"] },
+      "line":      { "role": "neutral", "displayName": "Hairline",         "canonical": "rgba(17, 17, 17, .12)", "tonalRamp": ["rgba(17,17,17,.04)", "rgba(17,17,17,.08)", "rgba(17,17,17,.12)", "rgba(17,17,17,.2)", "rgba(17,17,17,.32)", "rgba(17,17,17,.48)", "rgba(17,17,17,.66)", "rgba(17,17,17,.84)"] },
+      "on-cobalt": { "role": "neutral", "displayName": "On-Cobalt White",  "canonical": "#ffffff", "tonalRamp": ["#1a1a1a", "#3a3a3a", "#5c5c5c", "#7f7f7f", "#a3a3a3", "#c8c8c8", "#ececec", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "display":          { "displayName": "Display",          "purpose": "The name in the opening only." },
+      "display-slide":    { "displayName": "Display Slide",    "purpose": "The single-line work heading that slides across its full-bleed band; capped at 5.5rem." },
+      "headline-contact": { "displayName": "Headline Contact", "purpose": "The contact heading on the cobalt field, max 16ch." },
+      "headline":         { "displayName": "Headline",         "purpose": "Ordinary section headings." },
+      "title-mail":       { "displayName": "Title Mail",       "purpose": "The large underlined email address on the contact field." },
+      "tagline":          { "displayName": "Tagline",          "purpose": "The one-line tagline under the name." },
+      "title":            { "displayName": "Title",            "purpose": "Project names under screenshots." },
+      "body":             { "displayName": "Body",             "purpose": "All running text, 46 to 60ch measures." },
+      "label":            { "displayName": "Label",            "purpose": "Meta links, list links, chips and nav. Sentence case." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "scrub-linear", "value": "ease: 'none'; scrub: true", "purpose": "Default for every scroll-tied graphic: progress maps 1:1 to scroll and reverses on scroll up." },
+      { "name": "scrub-smoothed", "value": "ease: 'none'; scrub: .6", "purpose": "Pinned sequences (opening build, contact takeover) smooth the scrub slightly." },
+      { "name": "smooth-scroll", "value": "Lenis lerp 0.1; anchor scrollTo duration 1.4, offset -64px", "purpose": "Scroll smoothing driving ScrollTrigger; not an animation in itself." },
+      { "name": "opening-build", "value": "pin intro from top+=65 for +=85%; blocks scattered (rotation to 90deg, scale .72) to 3x3, 0.04 stagger, .2 hold", "purpose": "Signature opening: nine blocks assemble." },
+      { "name": "heading-slide", "value": "xPercent 40 to 0 (12 to -8 under 760px) over the band's full pass; rule scaleX 0 to 1 from top 80% to bottom 40%", "purpose": "Selected-work heading and its 2px rule." },
+      { "name": "shot-unmask", "value": "clip-path inset(16% 22% 16% 0% round 10px) to inset(0 round 10px), img scale 1.22 to 1, top 98% to top 65%", "purpose": "Screenshot reveal." },
+      { "name": "column-parallax", "value": "every second project y 90px to -30px across its pass; desktop only", "purpose": "Right gallery column drifts against the left." },
+      { "name": "row-rule", "value": "scaleX 0 to 1 from origin left, top 92% to top 60%", "purpose": "List row rules draw in." },
+      { "name": "timeline-draw", "value": "scaleY 0 to 1 from top, top 75% to bottom 55%; marker turns cobalt (.25s) when progress passes it", "purpose": "Recognition timeline with progress-synced markers." },
+      { "name": "stack-gather", "value": "x up to +/-160px, y 40-100px, rotation up to 14deg, opacity 0 to rest; top 95% to top 55%", "purpose": "Stack chips gather into line." },
+      { "name": "contact-takeover", "value": "pin contact for +=80%; 240px block scale .2 at -45deg to cover viewport diagonal at 0deg; content appears at .95; .35 hold", "purpose": "Cobalt block grows to become the contact page." },
+      { "name": "hover-fill", "value": "background .2s", "purpose": "Button fill swap to cobalt." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce or no GSAP: final states only, no pin, no scrub, all timeline markers on", "purpose": "Accessibility and failure fallback." }
+    ],
+    "breakpoints": [
+      { "name": "stack", "value": "760px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one solid action, ink fill turning cobalt on hover.",
+      "html": "<a class=\"ds-btn\" href=\"#\">See the work</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; min-height: 46px; padding: .7rem 1.35rem; border-radius: 4px; background: #111111; color: #f5f5f3; font-family: 'Host Grotesk', system-ui, sans-serif; font-weight: 500; text-decoration: none; transition: background .2s; } .ds-btn:hover { background: #2340ff; color: #ffffff; } .ds-btn:focus-visible { outline: 2px solid #2340ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Secondary action beside the button; underlined, cobalt on hover.",
+      "html": "<a class=\"ds-link\" href=\"#\">Open resume</a>",
+      "css": ".ds-link { color: #111111; font-family: 'Host Grotesk', system-ui, sans-serif; font-weight: 500; text-underline-offset: .22em; text-decoration-thickness: 1px; } .ds-link:hover { color: #2340ff; } .ds-link:focus-visible { outline: 2px solid #2340ff; outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Sticky Header",
+      "kind": "nav",
+      "refersTo": "header",
+      "description": "Opaque ground bar with a hairline, name left, four gray links right.",
+      "html": "<header class=\"ds-bar\"><a class=\"ds-bar-name\" href=\"#\">Simon Musmos</a><nav class=\"ds-bar-nav\"><a href=\"#\">Work</a><a href=\"#\">About</a><a href=\"#\">Contact</a><a href=\"#\">Resume</a></nav></header>",
+      "css": ".ds-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 64px; padding: 0 24px; background: #f5f5f3; border-bottom: 1px solid rgba(17,17,17,.12); font-family: 'Host Grotesk', system-ui, sans-serif; color: #111111; } .ds-bar-name { font-weight: 600; text-decoration: none; color: inherit; } .ds-bar-nav { display: flex; gap: 24px; font-size: .95rem; } .ds-bar-nav a { color: #5f5f5b; text-decoration: none; } .ds-bar-nav a:hover { color: #2340ff; } .ds-bar a:focus-visible { outline: 2px solid #2340ff; outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Stack Chips",
+      "kind": "chip",
+      "refersTo": "chip-stack",
+      "description": "Outlined 4px chips; minor skills drop to hairline and gray.",
+      "html": "<ul class=\"ds-stack\"><li>Laravel</li><li>React</li><li>Flutter</li><li class=\"ds-minor\">Git</li><li class=\"ds-minor\">Photoshop</li></ul>",
+      "css": ".ds-stack { display: flex; flex-wrap: wrap; gap: .35rem .5rem; list-style: none; padding: 0; margin: 0; font-family: 'Host Grotesk', system-ui, sans-serif; } .ds-stack li { padding: .3rem .8rem; border: 1px solid #111111; border-radius: 4px; font-size: .95rem; font-weight: 500; color: #111111; } .ds-stack li.ds-minor { border-color: rgba(17,17,17,.12); color: #5f5f5b; font-weight: 400; }"
+    },
+    {
+      "name": "Project Shot",
+      "kind": "card",
+      "refersTo": "shot",
+      "description": "A 10px clipped 16:10 screenshot with text on the ground beneath it, not a card.",
+      "html": "<article class=\"ds-project\"><div class=\"ds-shot\"><div class=\"ds-shot-img\"></div></div><h3>Meetz</h3><p>An Android app that finds car meets near you.</p><div class=\"ds-meta\"><span>Android, mobile</span><a href=\"#\">Visit Meetz</a></div></article>",
+      "css": ".ds-project { max-width: 420px; font-family: 'Host Grotesk', system-ui, sans-serif; color: #111111; } .ds-shot { border-radius: 10px; overflow: hidden; background: #ffffff; clip-path: inset(0 round 10px); } .ds-shot-img { aspect-ratio: 16 / 10; background: #111111; transition: transform .4s; } .ds-shot:hover .ds-shot-img { transform: scale(1.02); } .ds-project h3 { margin: 1rem 0 0; font-size: 1.3rem; font-weight: 600; letter-spacing: -.02em; } .ds-project p { margin: .25rem 0 0; color: #5f5f5b; line-height: 1.6; } .ds-meta { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin-top: .5rem; font-size: .92rem; } .ds-meta span { color: #5f5f5b; } .ds-meta a { color: #111111; font-weight: 500; } .ds-meta a:hover { color: #2340ff; }"
+    },
+    {
+      "name": "List Row with Drawn Rule",
+      "kind": "custom",
+      "refersTo": "list-row",
+      "description": "Three-column row under a 1px hairline that draws in on scroll.",
+      "html": "<ul class=\"ds-list\"><li><span class=\"ds-rule\"></span><h3>Xeres</h3><p>A homemade OS shell.<small>Visual Basic .NET</small></p><div class=\"ds-links\"><a href=\"#\">Download</a><a href=\"#\">Source</a></div></li></ul>",
+      "css": ".ds-list { list-style: none; padding: 0; margin: 0; font-family: 'Host Grotesk', system-ui, sans-serif; color: #111111; } .ds-list li { position: relative; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.7fr) 10rem; gap: 6px 32px; padding: 20px 0; align-items: baseline; border-bottom: 1px solid rgba(17,17,17,.12); } .ds-rule { position: absolute; left: 0; right: 0; top: 0; height: 1px; background: rgba(17,17,17,.12); } .ds-list h3 { margin: 0; font-size: 1.05rem; font-weight: 600; } .ds-list p { margin: 0; color: #5f5f5b; } .ds-list small { display: block; font-size: .92rem; color: #111111; } .ds-links { display: flex; justify-content: flex-end; gap: 1.1rem; font-size: .92rem; } .ds-links a { color: #111111; font-weight: 500; } .ds-links a:hover { color: #2340ff; }"
+    },
+    {
+      "name": "Recognition Timeline",
+      "kind": "custom",
+      "refersTo": "timeline-marker",
+      "description": "2px ink line with 12px square markers that turn cobalt as the drawn line reaches them.",
+      "html": "<dl class=\"ds-tl\"><span class=\"ds-tl-rule\"></span><div class=\"on\"><dt>2018</dt><dd>Fastest Programmer, FICT</dd></div><div class=\"on\"><dt>2019</dt><dd>Fastest Programmer, FICT</dd></div><div><dt>Nov 2024</dt><dd>Employee of the Month, ShipERP</dd></div></dl>",
+      "css": ".ds-tl { position: relative; padding-left: 28px; margin: 0; font-family: 'Host Grotesk', system-ui, sans-serif; color: #111111; } .ds-tl-rule { position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: #111111; } .ds-tl > div { position: relative; display: grid; grid-template-columns: 5.5rem 1fr; gap: 1rem; padding: .55rem 0; } .ds-tl > div::before { content: ''; position: absolute; left: -28px; top: calc(.55rem + .45em); width: 12px; height: 12px; border-radius: 3px; background: #f5f5f3; border: 2px solid #111111; box-sizing: border-box; transition: background .25s, border-color .25s; } .ds-tl > div.on::before, .ds-tl > div:hover::before { background: #2340ff; border-color: #2340ff; } .ds-tl dt { color: #5f5f5b; font-variant-numeric: tabular-nums; } .ds-tl dd { margin: 0; }"
+    },
+    {
+      "name": "Contact Field",
+      "kind": "custom",
+      "refersTo": "contact-field",
+      "description": "Full cobalt section with white text and the email as the large target.",
+      "html": "<section class=\"ds-contact\"><h2>Let's build something together.</h2><p>Hiring, or have a project in mind? Send me an email.</p><a class=\"ds-mail\" href=\"#\">simonmusmos@gmail.com</a><div class=\"ds-socials\"><a href=\"#\">GitHub</a><a href=\"#\">LinkedIn</a></div></section>",
+      "css": ".ds-contact { background: #2340ff; color: #ffffff; padding: 48px 32px; font-family: 'Host Grotesk', system-ui, sans-serif; } .ds-contact h2 { margin: 0; font-size: clamp(2.2rem, 1.4rem + 3.4vw, 4.5rem); font-weight: 600; line-height: 1; letter-spacing: -.03em; max-width: 16ch; } .ds-contact p { margin: 1rem 0 0; max-width: 46ch; line-height: 1.6; } .ds-contact a { color: #ffffff; text-underline-offset: .22em; text-decoration-thickness: 1px; } .ds-contact a:hover { text-decoration-thickness: 2px; } .ds-contact a:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; border-radius: 2px; } .ds-mail { display: inline-block; margin-top: 2rem; font-size: clamp(1.4rem, 1rem + 2.6vw, 3rem); font-weight: 600; letter-spacing: -.02em; overflow-wrap: anywhere; } .ds-socials { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; margin-top: 2rem; }"
+    },
+    {
+      "name": "Block Grid",
+      "kind": "custom",
+      "refersTo": "block",
+      "description": "Nine flat 4px squares, seven ink and two cobalt, in their assembled 3x3 state.",
+      "html": "<div class=\"ds-blocks\"><i></i><i class=\"c\"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class=\"c\"></i></div>",
+      "css": ".ds-blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7.14%; width: 240px; aspect-ratio: 1; } .ds-blocks i { border-radius: 4px; background: #111111; transition: transform .3s; } .ds-blocks i.c { background: #2340ff; } .ds-blocks:hover i:nth-child(odd) { transform: rotate(-8deg); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Scrubbed Build",
+    "overview": "A plain off-white page where the only graphics are flat square blocks and straight lines, and every one of them is tied to the scroll position. Nothing moves on its own: scroll down and the pieces assemble, scroll up and they come apart again. Blocks carry the idea of building things without decoration; the page itself stays simple, a single grotesk in ink and gray on a quiet ground.\n\nDensity is low and the reading order is linear: a large name with nine blocks, a full-bleed sliding heading over a two-up screenshot gallery, a ruled list, a narrow about column with a drawn timeline and a stack of chips, and a contact page that a cobalt block grows to fill. Cobalt is the single accent and it belongs to the moving graphics and the contact field; everything else is ink, gray and hairlines.\n\nThe system rejects ambient motion, 3D scenes, gradients, shadows, card containers and fade-up-on-every-section entrances. Every animation has a resting final state that is the whole design, which is what reduced-motion users and no-script visitors receive.",
+    "keyCharacteristics": [
+      "Flat off-white ground, ink type, one cobalt accent.",
+      "Host Grotesk only, at 400, 500 and 600.",
+      "Square blocks (4px radius) and 2px ink lines as the only graphic vocabulary.",
+      "All motion scrubbed to scroll with GSAP ScrollTrigger, reversible, never autoplaying.",
+      "No shadows, no gradients, no cards."
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Cobalt is the only hue. It appears on graphics that move, on interaction feedback, and on the contact field. It never fills a static section background, a heading, or body text.", "section": "colors" },
+      { "name": "The No-Ramp Rule", "body": "There are no tints or shades of any token in use. If something needs to be quieter, it moves from ink to gray or to the hairline, not to a new lightness.", "section": "colors" },
+      { "name": "The Three Weights Rule", "body": "Only 400, 500 and 600 exist. 600 is for headings and the email; 500 for the tagline, buttons, links in meta rows and primary chips; 400 for everything else.", "section": "typography" },
+      { "name": "The Balanced Heading Rule", "body": "Every h1 to h3 is semibold with at least -0.02em tracking and `text-wrap: balance`.", "section": "typography" },
+      { "name": "The Flat Block Rule", "body": "Blocks, buttons, chips and shots never cast a shadow and never carry a gradient. A block is a solid fill with a 4px corner.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do scrub every animation to scroll position (`scrub: true` or `.6`, `ease: 'none'`) so it runs backwards on scroll up.",
+      "Do give every animated element a final state that is the complete design, and ship that state alone under `prefers-reduced-motion` or when GSAP fails to load: no pins, no scrub, timeline markers on.",
+      "Do build graphics from solid square blocks (4px corner) and 2px ink lines only.",
+      "Do keep cobalt (#2340ff) to moving graphics, interaction feedback and the contact field.",
+      "Do use Host Grotesk alone at 400, 500 and 600, with negative tracking on headings.",
+      "Do let project content sit directly on the ground under its screenshot, separated by space, not containers."
+    ],
+    "donts": [
+      "Don't add ambient or autoplaying motion: no loops, idle drift, marquees or time-based entrances.",
+      "Don't add 3D scenes, WebGL backgrounds or particle fields.",
+      "Don't use shadows or gradients on any surface.",
+      "Don't wrap projects or sections in cards.",
+      "Don't fade-up every section on entry; motion belongs to the graphics, not the copy.",
+      "Don't introduce a second accent hue or tints of the existing tokens."
+    ]
+  }
+}
