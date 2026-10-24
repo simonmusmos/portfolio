@@ -17,7 +17,7 @@ Both arrive wanting to see shipped work quickly, then a way to get in touch or d
 Personal portfolio for Simon Musmos. Success means a visitor sees real shipped projects, understands what Simon builds, and either sends an email or opens the resume.
 
 ## Positioning
-Full-stack and mobile builder who ships their own products (Zodias, Prepr, UIJudge, Meetz, Nomad) alongside 7+ years of professional work: Senior Mobile and Web Developer at Intra Research since March 2026, before that PHP Developer at ShipERP Integrated Solutions (2023 to March 2026). "Your programmer next door": approachable, dependable, and someone who gets things done.
+Full-stack and mobile builder who ships their own products (Zodias, Prepr, UIJudge, Meetz, Nomad) alongside 8+ years of professional work: Senior Mobile and Web Developer at Intra Research since March 2026, before that PHP Developer at ShipERP Integrated Solutions (2023 to March 2026). "Your programmer next door": approachable, dependable, and someone who gets things done.
 
 ## Capabilities and Constraints
 - Static site: a single `index.html` with no build step, deployed on Vercel (`vercel.json`).

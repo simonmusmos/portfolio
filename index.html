@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simon Musmos</title>
-  <meta name="description" content="Simon Musmos, full-stack and mobile developer. Seven years of turning ideas into working software.">
-  <link rel="icon" href="img/favicon.ico">
+  <meta name="description" content="Simon Musmos, full-stack and mobile developer. Eight years of turning ideas into working software.">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
@@ -51,11 +53,23 @@
 
     .brand { position: fixed; top: 18px; left: 20px; z-index: 60; font-weight: 600; text-decoration: none; }
     .deck .brand { opacity: 0; }
-    .hint { position: fixed; left: 50%; bottom: 22px; z-index: 60; transform: translateX(-50%); color: var(--gray); font-size: .85rem; display: none; align-items: center; gap: 10px; }
-    .deck .hint { display: flex; }
-    .hint i { position: relative; width: 1px; height: 28px; background: var(--line); overflow: hidden; }
-    .hint i::after { content: ''; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--text); animation: drip 1.8s cubic-bezier(.6, 0, .3, 1) infinite; }
-    @keyframes drip { to { top: 100%; } }
+    /* Next: a round chevron button at the bottom; its label names the part it goes to */
+    .next { position: fixed; left: 50%; bottom: 20px; z-index: 60; display: none; flex-direction: column; align-items: center; gap: 8px; transform: translateX(-50%);
+      border: 0; background: none; color: var(--gray); font: inherit; font-size: .8rem; cursor: pointer; }
+    .deck .next { display: flex; }
+    .next .ring { position: relative; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(236, 235, 232, .22); color: var(--text); overflow: hidden;
+      transition: border-color .3s, background .3s, color .3s; }
+    .next .ring svg { width: 18px; height: 18px; animation: nudge 2.2s cubic-bezier(.5, 0, .3, 1) infinite; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
+    .next .lbl { transition: color .3s; white-space: nowrap; }
+    .next:hover .ring, .next:focus-visible .ring { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
+    .next:hover .lbl { color: var(--text); }
+    .next.up .ring svg { transform: rotate(180deg); animation: none; }
+    .next[disabled] { opacity: .4; cursor: default; }
+    @keyframes nudge { 0%, 55%, 100% { transform: translateY(0); } 25% { transform: translateY(4px); } }
+    /* the chevron sits below the frame captions on the work scene, so keep a clear lane for it */
+    .deck .scene { padding-bottom: 116px; }
+    /* content scrolling inside a tall scene fades out before it reaches the chevron */
+    .deck body::before { content: ''; position: fixed; left: 0; right: 0; bottom: 0; height: 120px; z-index: 55; pointer-events: none; background: linear-gradient(rgba(11, 11, 13, 0), var(--bg) 62%); }
     .nav { position: fixed; right: 18px; top: 50%; transform: translateY(-50%); z-index: 60; display: none; flex-direction: column; gap: 2px; list-style: none; }
     .deck .nav { display: flex; }
     .nav button { display: flex; align-items: center; justify-content: flex-end; gap: 10px; height: 26px; border: 0; background: none; color: var(--gray); font: inherit; font-size: .8rem; cursor: pointer; }
@@ -103,7 +117,7 @@
     .cap .desc { color: var(--gray); max-width: 50ch; margin-top: .3rem; }
     .cap .go { display: inline-block; margin-top: .6rem; font-weight: 500; }
     .cap .quiet { color: var(--gray); }
-    .stage { --fw: min(74vw, 1100px, calc((100svh - 300px) * 2.178)); --fh: calc(var(--fw) / 2.178); --ft: calc(43svh - var(--fh) / 2); }
+    .stage { --fw: min(74vw, 1100px, calc((100svh - 360px) * 2.178)); --fh: calc(var(--fw) / 2.178); --ft: calc(40svh - var(--fh) / 2); }   /* leaves a lane for the chevron */
     .deck .work { padding: 0; }
     .stage { position: absolute; inset: 0; }
     .slot { position: absolute; left: calc(50% - var(--fw) / 2); top: var(--ft); width: var(--fw); height: var(--fh); }
@@ -122,19 +136,36 @@
     .slot .dimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: brightness(.92); opacity: 0; border-radius: 2px; }
     .pill { position: fixed; left: 0; top: 0; z-index: 70; padding: .55rem 1rem; border-radius: 999px; background: var(--text); color: var(--bg); font-size: .88rem; font-weight: 500; white-space: nowrap; pointer-events: none; box-shadow: 0 8px 24px rgba(0, 0, 0, .35); transform: translate(-50%, -50%) scale(0); }
 
-    /* ---------- Scene: experience ---------- */
-    .xp .wrap { position: relative; }
-    .xp-line { position: absolute; left: calc(var(--gutter) + 5px); top: -8vh; bottom: -8vh; width: 2px; background: linear-gradient(rgba(58, 80, 255, 0), var(--cobalt) 15%, var(--cobalt) 85%, rgba(58, 80, 255, 0)); transform-origin: 50% 0; }
-    .xp-in { padding-left: 52px; }
-    .xp ol { list-style: none; margin-top: clamp(20px, 4vh, 40px); }
-    .xp li { position: relative; display: grid; grid-template-columns: 9rem minmax(0, 1fr) auto; gap: 2px 24px; align-items: baseline; padding: clamp(10px, 1.8vh, 18px) 0; border-top: 1px solid var(--line); }
-    .xp li:last-child { border-bottom: 1px solid var(--line); }
-    .xp li::before { content: ''; position: absolute; left: -53px; top: calc(clamp(10px, 1.8vh, 18px) + 8px); width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--cobalt); }
-    .xp li:first-child::before { background: var(--cobalt); box-shadow: 0 0 0 6px rgba(58, 80, 255, .18); }
-    .xp .when { color: var(--gray); font-size: .92rem; }
-    .xp h3 { font-size: clamp(1.05rem, .95rem + .6vw, 1.45rem); font-weight: 500; letter-spacing: -.02em; line-height: 1.2; }
-    .xp .org { color: var(--gray); text-align: right; }
-
+    /* ---------- Scene: experience, a timeline chart the particles draw ---------- */
+    .tl { --lab: minmax(0, 25rem); margin-top: clamp(12px, 3vh, 28px); }
+    .tl .axis, .tl li { display: grid; grid-template-columns: var(--lab) minmax(0, 1fr); column-gap: clamp(20px, 3vw, 48px); }
+    .tl .axis { position: relative; height: 28px; color: var(--gray); font-size: .82rem; }
+    .tl .axis::before { content: ''; grid-column: 1; }
+    .tl .axis span { position: absolute; left: calc(var(--lab-w, 0px) + (100% - var(--lab-w, 0px)) * (var(--y) - var(--from)) / (var(--to) - var(--from))); transform: translateX(-50%); }
+    .tl .axis .now { color: var(--cobalt-text); }
+    .tl ol { list-style: none; }
+    .tl li { align-items: center; padding: clamp(8px, 1.5vh, 14px) 0; border-top: 1px solid var(--line); }
+    .tl li:last-child { border-bottom: 1px solid var(--line); }
+    .tl .lab h3 { font-size: clamp(1rem, .9rem + .45vw, 1.25rem); font-weight: 500; letter-spacing: -.015em; line-height: 1.25; }
+    .tl .lab p { color: var(--gray); font-size: .9rem; }
+    .tl .lab .when { margin-left: .5rem; opacity: .75; white-space: nowrap; }
+    .tl li.cur h3::after { content: 'Now'; margin-left: .6rem; padding: .05rem .45rem; border-radius: 999px; background: rgba(58, 80, 255, .18); color: var(--cobalt-text); font-size: .72rem; font-weight: 500; vertical-align: middle; }
+    /* year gridlines behind the bars */
+    .tl .track { position: relative; height: 14px; background: repeating-linear-gradient(90deg, rgba(236, 235, 232, .07) 0 1px, transparent 1px calc(100% / 5)); }
+    .tl .bar { position: absolute; top: 2px; height: 10px; border-radius: 5px; background: var(--cobalt);
+      left: calc(100% * (var(--s) - 2017) / 10); width: max(10px, calc(100% * (var(--e) - var(--s)) / 10)); }
+    .tl .bar.thin { top: 5px; height: 4px; background: rgba(147, 160, 255, .55); }
+    .tl li.pt .bar { width: 10px; margin-left: -5px; border-radius: 50%; }   /* margin, not transform: the particles aim at the layout box */
+    .tl .dur { color: var(--cobalt-text); font-size: .82rem; margin-left: .5rem; white-space: nowrap; }
+    .tl li { transition: opacity .3s; }
+    .tl .bar { transition: background-color .3s, transform .3s; }
+    @media (hover: hover) {
+      .tl ol:hover li:not(:hover) { opacity: .38; }
+      .deck .tl.drawn li:hover .bar, .tl li:hover .bar { background: var(--cobalt-text); transform: scaleY(1.5); }   /* the hovered role's bar thickens and lightens */
+    }
+    .deck .tl .bar { background: transparent; transition: background-color .9s; }   /* the particles draw the bars, then the fill settles in under them */
+    .deck .tl.drawn .bar { background: var(--cobalt); }
+    .deck .tl.drawn .bar.thin { background: rgba(147, 160, 255, .55); }
     /* ---------- Lists ---------- */
     .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 20px; }
     .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 clamp(32px, 5vw, 80px); margin-top: 8px; }
@@ -172,10 +203,11 @@
       .w-title { top: calc(var(--ft) - 54px); font-size: 1.35rem !important; }
       .w-count { top: calc(var(--ft) - 48px); }
       .w-caps { grid-template-columns: 1fr; gap: 6px; top: calc(var(--ft) + var(--fh) + 16px); }
-      .xp li { grid-template-columns: 1fr; gap: 0; }
-      .xp .org { text-align: left; }
-      .xp-in { padding-left: 40px; }
-      .xp li::before { left: -41px; }
+      .tl .axis, .tl li { grid-template-columns: 1fr; }
+      .tl .track { margin-top: 8px; }
+      .tl .lab .when { display: block; margin-left: 0; }
+      .tl .axis span:first-child { transform: none; }
+      .tl .axis .now { transform: translateX(-100%); }
       .projects { grid-template-columns: 1fr; }
       .nav { right: 8px; }
       .nav button span { display: none; }
@@ -194,7 +226,7 @@
   <canvas id="gl" aria-hidden="true"></canvas>
   <a class="brand" href="#top" data-go="0">Simon Musmos</a>
   <nav class="nav" aria-label="Sections"></nav>
-  <p class="hint" aria-hidden="true"><i></i><span>Scroll</span></p>
+  <button class="next" type="button"><span class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span><span class="lbl">Next</span></button>
 
   <main>
     <section class="scene intro" id="top" data-name="Intro">
@@ -203,7 +235,7 @@
         <div class="row">
           <p class="tagline a-in">Your backlog's worst nightmare.</p>
           <div>
-            <p class="lede a-in">Full-stack and mobile developer. Seven years of shipping PHP and Laravel for a living, five products of my own built end to end, and now Senior Mobile and Web Developer at Intra Research.</p>
+            <p class="lede a-in">Full-stack and mobile developer. Eight years of shipping PHP and Laravel for a living, five products of my own built end to end, and now Senior Mobile and Web Developer at Intra Research.</p>
             <div class="actions a-in">
               <a class="btn" href="#work" data-go="2">See the work</a>
               <a class="link" href="resume/Simon Musmos - Resume.pdf" target="_blank" rel="noopener">Open resume</a>
@@ -216,11 +248,11 @@
     <section class="scene about" id="about" data-name="About" aria-label="About">
       <div class="wrap">
         <div class="row">
-          <p class="statement a-words">Seven years shipping for other people. Five products shipped for myself. Hand me the backlog and watch it shrink.</p>
+          <p class="statement a-words">Eight years shipping for other people. Five products shipped for myself. Hand me the backlog and watch it shrink.</p>
           <div class="p-slot"><img src="img/profile1-cutout.png" alt="Portrait of Simon Musmos"></div>
         </div>
         <dl class="stats a-in">
-          <div><dt>years professional</dt><dd data-to="7" data-suffix="+">7+</dd></div>
+          <div><dt>years professional</dt><dd data-to="8" data-suffix="+">8+</dd></div>
           <div><dt>products of my own</dt><dd data-to="5">5</dd></div>
           <div><dt>awards</dt><dd data-to="5">5</dd></div>
         </dl>
@@ -254,17 +286,17 @@
 
     <section class="scene xp" id="experience" data-name="Experience" aria-labelledby="experience-title">
       <div class="wrap">
-        <div class="xp-line" aria-hidden="true"></div>
-        <div class="xp-in">
-          <div class="head"><h2 id="experience-title" class="a-mask">Experience</h2><a class="link a-in" href="resume/Simon Musmos - Resume.pdf" target="_blank" rel="noopener">Full resume</a></div>
+        <div class="head"><h2 id="experience-title" class="a-mask">Experience</h2><a class="link a-in" href="resume/Simon Musmos - Resume.pdf" target="_blank" rel="noopener">Full resume</a></div>
+        <div class="tl" style="--from: 2017; --to: 2027">
+          <div class="axis a-in" aria-hidden="true"><span style="--y: 2017">2017</span><span style="--y: 2019">2019</span><span style="--y: 2021">2021</span><span style="--y: 2023">2023</span><span style="--y: 2025">2025</span><span class="now" style="--y: 2026.8">Now</span></div>
           <ol class="a-list">
-            <li><p class="when">2026 to now</p><h3>Senior Mobile and Web Developer</h3><p class="org">Intra Research</p></li>
-            <li><p class="when">2023 to 2026</p><h3>PHP Developer</h3><p class="org">ShipERP Integrated Solutions</p></li>
-            <li><p class="when">2022 to 2023</p><h3>Web Developer</h3><p class="org">ThinkBIT Solutions</p></li>
-            <li><p class="when">2020 to 2022</p><h3>Software Engineer</h3><p class="org">Aspire Outsourcing Solutions</p></li>
-            <li><p class="when">2019 to 2020</p><h3>Web Developer</h3><p class="org">Dynamic Markups</p></li>
-            <li><p class="when">2017 to now</p><h3>Freelance developer</h3><p class="org">Shops, clinics and kiosks</p></li>
-            <li><p class="when">2019</p><h3>BS Information Technology</h3><p class="org">Cavite State University, CCAT</p></li>
+            <li class="cur" style="--s: 2026.17; --e: 2026.8"><div class="lab"><h3>Senior Mobile and Web Developer</h3><p>Intra Research <span class="when">Mar 2026 to now</span></p></div><div class="track"><i class="bar"></i></div></li>
+            <li style="--s: 2023.42; --e: 2026.17"><div class="lab"><h3>PHP Developer</h3><p>ShipERP Integrated Solutions <span class="when">2023 to 2026</span></p></div><div class="track"><i class="bar"></i></div></li>
+            <li style="--s: 2022.25; --e: 2023.42"><div class="lab"><h3>Web Developer</h3><p>ThinkBIT Solutions <span class="when">2022 to 2023</span></p></div><div class="track"><i class="bar"></i></div></li>
+            <li style="--s: 2020.67; --e: 2022.08"><div class="lab"><h3>Software Engineer</h3><p>Aspire Outsourcing Solutions <span class="when">2020 to 2022</span></p></div><div class="track"><i class="bar"></i></div></li>
+            <li style="--s: 2019.58; --e: 2020.67"><div class="lab"><h3>Web Developer</h3><p>Dynamic Markups <span class="when">2019 to 2020</span></p></div><div class="track"><i class="bar"></i></div></li>
+            <li style="--s: 2017; --e: 2026.8"><div class="lab"><h3>Freelance developer</h3><p>Shops, clinics and kiosks <span class="when">2017 to now</span></p></div><div class="track"><i class="bar thin"></i></div></li>
+            <li class="pt" style="--s: 2019.4; --e: 2019.4"><div class="lab"><h3>BS Information Technology</h3><p>Cavite State University, CCAT <span class="when">2019</span></p></div><div class="track"><i class="bar"></i></div></li>
           </ol>
         </div>
       </div>
@@ -348,6 +380,14 @@
       mark.style.fontSize = Math.min((p.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) / w * 20 * .995, 300).toFixed(2) + 'px';
     }
     fitMark(); addEventListener('resize', fitMark);
+    // "3 yrs 1 mo" from each row's start and end (decimal years)
+    document.querySelectorAll('.tl li:not(.pt)').forEach(li => {
+      const st = getComputedStyle(li), m = Math.round((parseFloat(st.getPropertyValue('--e')) - parseFloat(st.getPropertyValue('--s'))) * 12);
+      const y = Math.floor(m / 12), mo = m % 12, txt = [y ? y + (y > 1 ? ' yrs' : ' yr') : '', mo ? mo + ' mo' : ''].filter(Boolean).join(' ');
+      if (txt) li.querySelector('.lab h3').insertAdjacentHTML('beforeend', '<span class="dur">' + txt + '</span>');
+    });
+    const syncAxis = () => { const t = $('.tl .track'), ax = $('.tl .axis'); if (t && ax) ax.style.setProperty('--lab-w', (t.getBoundingClientRect().left - ax.getBoundingClientRect().left) + 'px'); };
+    syncAxis(); addEventListener('resize', syncAxis);
     if (reduce || !canGL || !window.THREE || !window.gsap) return;   // plain scrolling page
 
     const root = document.documentElement; root.classList.add('deck');
@@ -452,14 +492,29 @@
         for (let i = 0; i < N; i++) { a[i * 2] = (Math.random() - .5) * b.width; a[i * 2 + 1] = (Math.random() - .5) * b.height; }
         return { pts: a, anchor: s, at: centre(s), size: baseSize() }; });
     }
-    function shapeLine() {
-      return measure($('.xp'), () => { const xl = $('.xp-line'), b = xl.getBoundingClientRect(), x = b.left + 1 - VW / 2, a = new Float32Array(N * 2);
-        for (let i = 0; i < N; i++) { const sp = Math.pow(Math.random(), 3) * 12; a[i * 2] = x + (Math.random() - .5) * sp; a[i * 2 + 1] = VH / 2 - b.top - Math.random() * b.height; }
-        return { pts: a, anchor: null, size: baseSize() }; });
+    function shapeGantt() {
+      return measure($('.xp'), () => {
+        // layout boxes, not getBoundingClientRect: rows may still carry an entrance offset when this runs
+        const sc = $('.xp');
+        const box = el => { let x = 0, y = 0, e = el; while (e && e !== sc) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; } return { left: x, top: y - sc.scrollTop, width: el.offsetWidth, height: el.offsetHeight }; };
+        const bars = $$('.tl .bar').map(box).filter(r => r.width > 0);
+        const area = bars.reduce((t, r) => t + r.width * r.height, 0) || 1, a = new Float32Array(N * 2);
+        let i = 0;
+        bars.forEach((r, k) => {
+          const share = k === bars.length - 1 ? N - i : Math.round(N * r.width * r.height / area);
+          for (let j = 0; j < share && i < N; j++, i++) {
+            let x = r.left + Math.random() * r.width, y = r.top + Math.random() * r.height;
+            if (r.width <= r.height + 1) { const ang = Math.random() * 6.283, rad = Math.sqrt(Math.random()) * r.width / 2; x = r.left + r.width / 2 + Math.cos(ang) * rad; y = r.top + r.height / 2 + Math.sin(ang) * rad; }
+            a[i * 2] = x - VW / 2; a[i * 2 + 1] = VH / 2 - y;
+          }
+        });
+        const z = new Float32Array(N); for (let q = 0; q < N; q++) z[q] = 1.1 + rnd[q] * 1.1;   // finer than the field, so the bars read solid
+        return { pts: a, anchor: null, size: z };
+      });
     }
     function buildShapes() {
       S.scatter = shapeScatter(); S.text = shapeText(); S.portrait = shapePortrait($('.p-slot')); S.portrait2 = shapePortrait($('.p-slot2'));
-      S.frame = shapeFrame(); S.line = shapeLine();
+      S.frame = shapeFrame(); S.gantt = shapeGantt();
     }
     // anchored shapes were sampled relative to their anchor; scenes don't move, so the measured centre is the offset
     const off = k => S[k] && S[k].at ? S[k].at : [0, 0];
@@ -530,9 +585,9 @@
     scenes.forEach((sc, i) => {
       if (i === WORK) projects.forEach((p, k) => steps.push({ scene: i, shape: 'frame', project: k, name: k ? null : 'Selected work' }));
       else steps.push({ scene: i, name: sc.dataset.name, shape: sc.classList.contains('intro') ? 'text' : sc.classList.contains('about') ? 'portrait'
-        : sc.classList.contains('xp') ? 'line' : sc.classList.contains('contact') ? 'portrait2' : 'scatter' });
+        : sc.classList.contains('xp') ? 'gantt' : sc.classList.contains('contact') ? 'portrait2' : 'scatter' });
     });
-    const alphaOf = st => st.shape === 'scatter' ? .32 : 1;
+    const alphaOf = st => st.shape === 'scatter' ? .32 : st.shape === 'gantt' ? .55 : 1;
 
     // side nav: one dot per scene (the work scene's dot covers all projects)
     const nav = $('.nav');
@@ -559,6 +614,7 @@
           .fromTo($('.actions', sc), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: 'power3.out' }, .6);
         return tl;
       }
+      const chart = $('.tl', sc); if (chart) { chart.classList.remove('drawn'); tl.add(() => chart.classList.add('drawn'), 1.1); }
       tl.fromTo($$('.a-mask .mask > span', sc), { yPercent: 110 }, { yPercent: 0, duration: 1, ease: 'power4.out' }, 0)
         .fromTo($$('.a-in', sc), { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: .8, stagger: .07, ease: 'power3.out' }, .15)
         .fromTo($$('.a-list > li', sc), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .7, stagger: .05, ease: 'power3.out' }, .2);
@@ -569,7 +625,6 @@
         tl.to(counts, { v: i => counts[i].to, duration: 1.4, ease: 'power2.out', stagger: .1,
           onUpdate: () => counts.forEach(c => { c.dd.textContent = Math.round(c.v) + (c.v >= c.to ? c.s : ''); }) }, .5);
       }
-      if (sc.classList.contains('xp')) tl.fromTo($('.xp-line', sc), { scaleY: 0 }, { scaleY: 1, duration: 1.2, ease: 'power3.inOut' }, 0);
       if (sc.classList.contains('work')) tl.fromTo($$('.w-title, .w-count, .w-bar, .w-caps', sc), { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: .8, stagger: .06, ease: 'power3.out' }, .5);
       return tl;
     }
@@ -599,12 +654,18 @@
 
     /* ================= The transition director ================= */
     let cur = 0, busy = true, tl = null;
+    const nextBtn = $('.next');
     function setNav() {
       const sc = steps[cur].scene;
       navBtns.forEach((b, i) => b.toggleAttribute('aria-current', i === sc) || (i === sc ? b.setAttribute('aria-current', 'step') : b.removeAttribute('aria-current')));
       navBtns[sc].setAttribute('aria-current', 'step');
       gsap.to('.brand', { opacity: cur ? 1 : 0, duration: .5 });
-      gsap.to('.hint', { opacity: cur ? 0 : 1, duration: .5 });
+      // the chevron names where it goes; on the last part it turns round and goes back to the start
+      const last = cur === steps.length - 1, nx = steps[cur + 1];
+      const label = last ? 'Back to start' : nx.scene === steps[cur].scene ? 'Next project' : scenes[nx.scene].dataset.name;
+      nextBtn.classList.toggle('up', last);
+      nextBtn.querySelector('.lbl').textContent = label;
+      nextBtn.setAttribute('aria-label', last ? 'Back to start' : 'Next: ' + label);
       scenes.forEach((s, i) => s.setAttribute('aria-hidden', i === sc ? 'false' : 'true'));
     }
     function go(to) {
@@ -628,9 +689,11 @@
       tl.add(sceneOut(scA), 0);
       tl.add(() => {
         usePair(A.shape, B.shape); PU.uT.value = 0;
-        PU.uSwirl.value = (A.shape === 'line' || B.shape === 'line') ? .35 : 1;
+        PU.uSwirl.value = (A.shape === 'gantt' || B.shape === 'gantt') ? .6 : 1;
         scA.classList.remove('on'); resetScene(scA);
         scB.classList.add('on'); gsap.set(scB.querySelectorAll('.wrap > *, .stage > *:not(.slot)'), { opacity: 0 });
+        // the chart's layout is final now that its scene is showing: aim the particles at the bars as they really sit
+        if (B.shape === 'gantt') { syncAxis(); S.gantt = shapeGantt(); curB = null; usePair(A.shape, B.shape); }
         if (B.project !== undefined) { pa = pb = B.project; setTex(); LU.uProg.value = 0; caption(B.project); placePlane(); }
       }, A.project !== undefined ? .8 : .45);
       const t0 = A.project !== undefined ? .8 : .45;
@@ -642,6 +705,7 @@
       if (B.project !== undefined) tl.to(LU.uReveal, { value: 1, duration: 1, ease: 'power2.out' }, t0 + 1.4).to(PU.uAlpha, { value: 0, duration: .7 }, t0 + 1.6);
     }
     const next = () => go(cur + 1), prev = () => go(cur - 1);
+    nextBtn.addEventListener('click', () => cur === steps.length - 1 ? go(0) : next());
 
     // input: one gesture, one step; let tall scenes scroll inside first
     let wheelAcc = 0, lastWheel = 0, consumed = false;
@@ -721,7 +785,7 @@
     const fontReady = document.fonts ? document.fonts.load('600 100px "Host Grotesk"').then(() => document.fonts.ready) : Promise.resolve();
     Promise.all([imgReady, fontReady]).then(() => {
       try { const n = 180, c = document.createElement('canvas'); c.width = c.height = n; const x = c.getContext('2d'); x.drawImage(pimg, 0, 0, n, n); portraitData = { d: x.getImageData(0, 0, n, n).data, n }; } catch (e) {}
-      fitMark(); buildShapes();
+      fitMark(); syncAxis(); buildShapes();
       usePair('scatter', 'text'); PU.uT.value = 0;
       gsap.timeline({ onComplete: () => { busy = false; } })
         .to(PU.uAlpha, { value: 1, duration: 1 }, 0)
